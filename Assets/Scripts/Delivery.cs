@@ -2,24 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
-public class Delivery : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class Delivery : MonoBehaviour
 {
     private Player player;
+    private GameManager gm;
 
     private float deliveredSouls = 0;
+    private float currentSouls;
 
     public Slider buttonSlider;
-    private bool isHolding;
+    public bool isHolding;
     public float waitSpeed;
 
     public CanvasGroup deliveryUI;
     public float fadeSpeed;
 
+    public GameObject exitDoor;
+
+    public Slider deliverySlider;
+    public RectTransform targetDelivery;
+
+    public GameObject stampPrefab;
+    public float itemChance;
+    public Transform spawnPos;
+    public float upwardForce;
+
     void Start()
     {
         player = FindObjectOfType<Player>();
+        gm = FindObjectOfType<GameManager>();
+        SetQuota();
     }
 
     void Update()
@@ -59,27 +72,34 @@ public class Delivery : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         // Adds player souls to delivered souls, then removes all players collected souls
         deliveredSouls += player.souls;
+        currentSouls = 0;
+        currentSouls += player.souls;
         player.souls = 0;
-    }
 
-    // If the button is being pressed(pointer down) and the player is in the room, holding is set to true
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        if (player.canDeliver)
+        deliverySlider.value = deliveredSouls / gm.maxQuota;
+
+        exitDoor.SetActive(true);
+
+        if (deliveredSouls >= gm.quota)
         {
-            isHolding = true;
-            player.canShoot = false;
+            for (int i = 0; i < currentSouls; i++)
+            {
+                float chance = Random.Range(0, 100);
+                
+                if (chance <= itemChance / i + 1)
+                {
+                    //new Vector3(spawnPos.position.x, sp)
+                    Rigidbody stamp = Instantiate(stampPrefab, new Vector3(spawnPos.position.x, spawnPos.position.y + 3, spawnPos.position.z), Quaternion.identity).GetComponent<Rigidbody>();
+                    stamp.AddForce(Random.Range(-3f, 3f), upwardForce, Random.Range(-3f, 3f), ForceMode.Impulse);
+                }
+            }
         }
     }
 
-    // If the button is let go of, the slider will reset
-    public void OnPointerUp(PointerEventData eventData)
+    void SetQuota()
     {
-        if (player.canDeliver)
-        {
-            buttonSlider.value = 0f;
-            isHolding = false;
-            player.canShoot = true;
-        }
+        float targetValue = gm.quota / deliverySlider.maxValue;
+        float sliderWidth = deliverySlider.fillRect.rect.width;
+        targetDelivery.anchoredPosition = new Vector2(targetValue * sliderWidth, targetDelivery.anchoredPosition.y);
     }
 }

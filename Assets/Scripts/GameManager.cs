@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,10 @@ public class GameManager : MonoBehaviour
 
     private Player player;
 
+    public TMP_Text stampText;
+    public TMP_Text keyText;
+    public TMP_Text bombText;
+
     void Start()
     {
         EnemyCount();
@@ -20,7 +25,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        UpdateQuota();
+        UpdateItems();
     }
 
     void EnemyCount()
@@ -42,8 +47,10 @@ public class GameManager : MonoBehaviour
         targetQuota.anchoredPosition = new Vector2(targetValue * sliderWidth, targetQuota.anchoredPosition.y);
     }
 
-    void UpdateQuota()
+    void UpdateItems()
     {
         quotaSlider.value = player.souls / maxQuota;
+        stampText.text = player.stamps.ToString();
+        keyText.text = player.keys.ToString();
     }
 }

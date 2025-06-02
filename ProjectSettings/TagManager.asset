@@ -9,6 +9,9 @@ TagManager:
   - Bullet
   - Soul
   - DeliveryRoom
+  - Exit
+  - Key
+  - Stamp
   layers:
   - Default
   - TransparentFX

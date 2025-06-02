@@ -33,9 +33,13 @@ public class Player : MonoBehaviour
     #endregion
 
     public float souls;
+    public float stamps;
+    public float keys;
 
     public bool canDeliver;
     public bool canShoot;
+
+    public Animator animator;
 
     void Start()
     {
@@ -63,7 +67,7 @@ public class Player : MonoBehaviour
     {
         if (transform.position.y < -100)
         {
-            SceneManager.LoadScene("Game");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         #region Movement
@@ -72,6 +76,15 @@ public class Player : MonoBehaviour
         Vector3 moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
         // Sets velocity to the direction of the movement input
         velocity = moveInput.normalized * speed;
+
+        if (moveInput != Vector3.zero)
+        {
+            animator.SetBool("isWalking", true);
+        }
+        else
+        {
+            animator.SetBool("isWalking", false);
+        }
         #endregion
 
         #region Jumping
@@ -134,8 +147,15 @@ public class Player : MonoBehaviour
 
         if (health <= 0)
         {
-            SceneManager.LoadScene("Game");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+    }
+
+    public void Pickup(string item)
+    {
+        if (item == "soul") souls++;
+        else if (item == "stamp") stamps++;
+        else if (item == "key") keys++;
     }
 
     void OnTriggerEnter(Collider obj)
@@ -147,15 +167,24 @@ public class Player : MonoBehaviour
             Destroy(enemy.gameObject);
         }
 
-        if (obj.tag == "Soul")
-        {
-            souls += 1;
-            Destroy(obj.gameObject);
-        }
-
         if (obj.tag == "DeliveryRoom")
         {
             canDeliver = true;
+        }
+
+        if (obj.tag == "Exit")
+        {
+            int currentIndex = SceneManager.GetActiveScene().buildIndex;
+            int nextIndex = currentIndex + 1;
+
+            if (nextIndex < SceneManager.sceneCountInBuildSettings)
+            {
+                SceneManager.LoadScene(nextIndex);
+            }
+            else
+            {
+                SceneManager.LoadScene(0);
+            }
         }
     }
 
