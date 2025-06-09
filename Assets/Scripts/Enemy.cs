@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        agent.destination = target.position; 
+        if (agent.enabled) agent.destination = target.position; 
     }
 
     public void TakeDamage(float damage)

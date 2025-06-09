@@ -8,7 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Floor_1.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Floor_2.unity
-    guid: 15a36dadbf99fae4c91477b6c943f6ab
+    guid: a8d2f24cf4e73cd4db8674330e617efe
   m_configObjects: {}
