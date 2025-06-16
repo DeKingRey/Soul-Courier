@@ -7332,7 +7332,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -7349,10 +7349,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d81a48191fca734c9e7233153e856b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 5, y: 5}
+  size: {x: 10, y: 10}
   startPos: 0
-  room: {fileID: 2843154979597922313, guid: 9bf0beb5ccb5ab247b6e94317eee870f, type: 3}
-  offset: {x: 6, y: 6}
+  rooms:
+  - room: {fileID: 2843154979597922313, guid: 9bf0beb5ccb5ab247b6e94317eee870f, type: 3}
+    minPos: 0
+    maxPos: 1
+    compulsory: 1
+  - room: {fileID: 2843154979597922313, guid: 00131b6f3eae9434284e42cf0325cd3e, type: 3}
+    minPos: 0
+    maxPos: 15
+    compulsory: 0
+  - room: {fileID: 2843154979597922313, guid: 68040b9ac7615b6429b2fc506580c7d4, type: 3}
+    minPos: 10
+    maxPos: 15
+    compulsory: 0
+  - room: {fileID: 2843154979597922313, guid: 2a580f738c428444c9adb471ad3e0fc7, type: 3}
+    minPos: 15
+    maxPos: 15
+    compulsory: 1
+  - room: {fileID: 2843154979597922313, guid: 2fdeb8710eb536443a2201ff563aa61c, type: 3}
+    minPos: 10
+    maxPos: 15
+    compulsory: 0
+  offset: {x: 8, y: 8}
+  maxRooms: 15
 --- !u!1 &1205775284
 GameObject:
   m_ObjectHideFlags: 0
