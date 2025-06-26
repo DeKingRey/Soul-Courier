@@ -112,6 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: stamp
   isChild: 1
+  speed: 0
 --- !u!1 &8601672824137286174
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,6 +126,7 @@ GameObject:
   - component: {fileID: 8601672824137286144}
   - component: {fileID: 8601672824137286145}
   - component: {fileID: 2416137877982916623}
+  - component: {fileID: 7641126226865464313}
   m_Layer: 0
   m_Name: Stamp
   m_TagString: Stamp
@@ -227,3 +229,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7641126226865464313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8601672824137286174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c53e1ba535747e4b8e0b83e99dbec74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: stamp
+  isChild: 0
+  speed: 5

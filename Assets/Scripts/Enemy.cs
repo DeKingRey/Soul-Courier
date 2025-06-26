@@ -20,13 +20,13 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        agent = GetComponent<NavMeshAgent>();
     }
 
     void Update()
     {
-        if (agent.enabled) agent.destination = target.position; 
+        if (agent.enabled && agent.isOnNavMesh) agent.destination = target.position; 
     }
 
     public void TakeDamage(float damage)

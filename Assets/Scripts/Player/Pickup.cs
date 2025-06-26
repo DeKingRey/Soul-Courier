@@ -10,6 +10,8 @@ public class Pickup : MonoBehaviour
     private GameObject obj;
     public bool isChild;
 
+    public float speed;
+
     void Start()
     {
         player = FindObjectOfType<Player>();
@@ -21,6 +23,17 @@ public class Pickup : MonoBehaviour
         else
         {
             obj = this.gameObject;
+        }
+    }
+
+    void Update()
+    {
+        Vector3 playerPos = player.transform.position + new Vector3(0, 1.5f, 0);
+        float distance = Vector3.Distance(playerPos, transform.position); // Gets the shortest distance to the player from the item
+
+        if (distance <= 4f)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, playerPos, speed * Time.deltaTime); // Moves the item towarss the player
         }
     }
 

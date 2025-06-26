@@ -11,4 +11,12 @@ public class Bullet : MonoBehaviour
     {
         transform.position += transform.forward * speed * Time.deltaTime;
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag != "Player" && !other.isTrigger)
+        {
+            Destroy(gameObject);
+        }
+    }
 }

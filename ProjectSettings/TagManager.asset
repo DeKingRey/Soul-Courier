@@ -12,6 +12,8 @@ TagManager:
   - Exit
   - Key
   - Stamp
+  - Reward
+  - ExitDoors
   layers:
   - Default
   - TransparentFX

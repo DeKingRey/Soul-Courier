@@ -7,7 +7,10 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     #region Movement Variables
+    [Header("Movement")]
     public float speed;
+    public float rotationSpeed = 0.1f;
+    private float rotationVelocity;
 
     public float jumpPower;
     private bool isGrounded;
@@ -17,21 +20,24 @@ public class Player : MonoBehaviour
 
     private Vector3 velocity;
 
-    private Camera mainCam;
+    private Transform mainCam;
 
     #region Health Variables
+    [Header("Health")]
     public float maxHealth;
     public float health;
     public Image[] hearts;
     #endregion
 
     #region Bullet Variables
+    [Header("Bullet")]
     public GameObject bullet;
     public Transform shotPoint;
     public float fireRate;
     float nextShot;
     #endregion
 
+    [Header("Items")]
     public float souls;
     public float stamps;
     public float keys;
@@ -44,7 +50,10 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        mainCam = Camera.main;
+        mainCam = Camera.main.GetComponent<Transform>();
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     void Update()
@@ -73,17 +82,30 @@ public class Player : MonoBehaviour
         #region Movement
 
         // Gets the movement input directions
-        Vector3 moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-        // Sets velocity to the direction of the movement input
-        velocity = moveInput.normalized * speed;
+        Vector3 direction = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 
-        if (moveInput != Vector3.zero)
+        // Movement directions relative to the camera, sets y to zero to avoid vertical rotation
+        Vector3 moveDir = mainCam.forward * direction.z + mainCam.right * direction.x;
+        moveDir.y = 0f;
+
+        // Rotates the player towards the cameras forward direction
+        Vector3 camFoward = mainCam.forward;
+        camFoward.y = 0f;
+        transform.rotation = Quaternion.LookRotation(camFoward);
+
+        if (direction != Vector3.zero)
         {
             animator.SetBool("isWalking", true);
+
+            // Sets velocity to the direction of the movement input
+            velocity = moveDir.normalized * speed;
         }
         else
         {
             animator.SetBool("isWalking", false);
+
+            // Sets velocity to zero
+            velocity = Vector3.zero;
         }
         #endregion
 
@@ -104,7 +126,7 @@ public class Player : MonoBehaviour
         }
         #endregion
 
-        #region Rotation
+        /*#region Rotation
         Ray cameraRay = mainCam.ScreenPointToRay(Input.mousePosition);
         Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
         float rayLength;
@@ -114,7 +136,13 @@ public class Player : MonoBehaviour
             Vector3 pointToLook = cameraRay.GetPoint(rayLength);
             transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
         }
-        #endregion
+
+        // Gets the angle the player is moving at relative to the camera
+        float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + mainCam.eulerAngles.y;
+
+        // Smoothes the angle 
+        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref rotationVelocity, rotationSpeed);
+        #endregion*/
     }
 
     void Shoot()

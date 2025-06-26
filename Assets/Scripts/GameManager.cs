@@ -17,18 +17,35 @@ public class GameManager : MonoBehaviour
     public TMP_Text keyText;
     public TMP_Text bombText;
 
+    private bool begin;
+
     void Start()
     {
-        EnemyCount();
         player = FindObjectOfType<Player>();
+        StartCoroutine(BeginEnemyCount());
     }
 
     void Update()
     {
+        if (!begin) return;
+
         UpdateItems();
     }
 
-    void EnemyCount()
+    IEnumerator BeginEnemyCount()
+    {
+        while (GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
+        {
+            yield return null; // Waits until enemies are spawned
+        }
+
+        yield return null; // Waits one extra frame
+
+        begin = true;
+        EnemyCount();
+    }
+
+    public void EnemyCount()
     {
         // Just uses var as a temporary variable(the variable is an array)
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");

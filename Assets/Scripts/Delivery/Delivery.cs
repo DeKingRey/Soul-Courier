@@ -18,20 +18,21 @@ public class Delivery : MonoBehaviour
     public CanvasGroup deliveryUI;
     public float fadeSpeed;
 
-    public GameObject exitDoor;
+    private GameObject exitDoor;
 
     public Slider deliverySlider;
     public RectTransform targetDelivery;
 
     public GameObject stampPrefab;
     public float itemChance;
-    public Transform spawnPos;
+    private Transform spawnPos;
     public float upwardForce;
 
     void Start()
     {
         player = FindObjectOfType<Player>();
         gm = FindObjectOfType<GameManager>();
+
         SetQuota();
     }
 
@@ -44,10 +45,18 @@ public class Delivery : MonoBehaviour
         if (player.canDeliver)
         {
             targetAlpha = 1f;
+
+            Cursor.lockState = CursorLockMode.Confined; // Enables cursor within the screen
+            Cursor.visible = true;
+            exitDoor = GameObject.FindWithTag("ExitDoors");
+            spawnPos = GameObject.FindWithTag("Reward").transform;
         }
         else
         {
             targetAlpha = 0f;
+
+            Cursor.lockState = CursorLockMode.Locked; // Disables cursor
+            Cursor.visible = false;
         }
 
         // Smoothly increments UI alpha to the target alpha at a speed
@@ -78,17 +87,19 @@ public class Delivery : MonoBehaviour
 
         deliverySlider.value = deliveredSouls / gm.maxQuota;
 
-        exitDoor.SetActive(true);
-
         if (deliveredSouls >= gm.quota)
         {
+            foreach (Transform door in exitDoor.transform)
+            {
+                door.gameObject.SetActive(true);
+            }
+
             for (int i = 0; i < currentSouls; i++)
             {
                 float chance = Random.Range(0, 100);
                 
                 if (chance <= itemChance / i + 1)
                 {
-                    //new Vector3(spawnPos.position.x, sp)
                     Rigidbody stamp = Instantiate(stampPrefab, new Vector3(spawnPos.position.x, spawnPos.position.y + 3, spawnPos.position.z), Quaternion.identity).GetComponent<Rigidbody>();
                     stamp.AddForce(Random.Range(-3f, 3f), upwardForce, Random.Range(-3f, 3f), ForceMode.Impulse);
                 }

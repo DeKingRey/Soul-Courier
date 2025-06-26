@@ -111,4 +111,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: soul
-  obj: {fileID: 7270611749994251257}
+  isChild: 0
+  speed: 5

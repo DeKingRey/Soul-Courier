@@ -111,4 +111,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: key
-  obj: {fileID: 3070015336027529365}
+  isChild: 0
+  speed: 5
