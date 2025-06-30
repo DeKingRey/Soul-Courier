@@ -59,9 +59,13 @@ public class GameManager : MonoBehaviour
             maxQuota += enemy.GetComponent<Enemy>().value;
         }
 
-        float targetValue = quota / quotaSlider.maxValue;
-        float sliderWidth = quotaSlider.fillRect.rect.width;
-        targetQuota.anchoredPosition = new Vector2(targetValue * sliderWidth, targetQuota.anchoredPosition.y);
+        float targetValue = quota / maxQuota; // gets the target value, e.g. if the target quota is 50 and the max value is 100, then the target value is 0.5 // quota / quotaSlider.maxValue
+        float sliderHeight = quotaSlider.GetComponent<RectTransform>().rect.height; // The slider goes bottom to top, so this gets the height of it
+        targetQuota.anchoredPosition = new Vector2(targetQuota.anchoredPosition.x, targetValue * sliderHeight); // Keeps the x position the same, and calculates the y position by multiplying the target value by the slider height
+
+        Debug.Log(sliderHeight + " " + targetValue);
+
+        // targetValue = 0.5, sliderHeight = 200, 0.5 * 200 = 100
     }
 
     void UpdateItems()

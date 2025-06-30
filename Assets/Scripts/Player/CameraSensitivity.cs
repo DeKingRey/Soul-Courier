@@ -6,8 +6,10 @@ using Cinemachine;
 public class CameraSensitivity : MonoBehaviour
 {
     public CinemachineFreeLook freeLookCam;
-    public float hSensitivity = 150f;
-    public float vSensitivity = 2f;
+    public float sensitivityMultiplier = 1f;
+
+    public float xSensitivity;
+    public float ySensitivity;
 
     // Update is called once per frame
     void Update()
@@ -15,7 +17,7 @@ public class CameraSensitivity : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
 
-        freeLookCam.m_XAxis.Value += mouseX * hSensitivity * Time.deltaTime;
-        freeLookCam.m_YAxis.Value += -mouseY * vSensitivity * Time.deltaTime;
+        freeLookCam.m_XAxis.Value += mouseX * sensitivityMultiplier * xSensitivity;
+        freeLookCam.m_YAxis.Value += -mouseY * sensitivityMultiplier * ySensitivity;
     }
 }

@@ -47,6 +47,8 @@ public class Player : MonoBehaviour
 
     public Animator animator;
 
+    private Vector3 spawnPos;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -54,6 +56,10 @@ public class Player : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        spawnPos = GameObject.FindGameObjectWithTag("Start").transform.position;
+
+        transform.position = new Vector3(spawnPos.x, 5, spawnPos.z);
     }
 
     void Update()

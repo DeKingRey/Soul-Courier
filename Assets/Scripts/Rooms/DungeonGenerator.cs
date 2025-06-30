@@ -57,6 +57,7 @@ public class DungeonGenerator : MonoBehaviour
 
     public Vector2Int size; // Size of grid
     public int startPos = 0; // Starting point on grid(generally 0)
+    public int defaultOffset;
     public Rule[] rooms; 
     public int maxRooms;
 
@@ -124,8 +125,8 @@ public class DungeonGenerator : MonoBehaviour
             #region Spawning the Room
 
             Vector2 offset = rooms[randomRoom].offset;
-            float offsetX = i * 16 + (offset.x - 16) / 2f;
-            float offsetY = j * 16 + (offset.y - 16) / 2f;
+            float offsetX = i * defaultOffset + (offset.x - defaultOffset) / 2f;
+            float offsetY = j * defaultOffset + (offset.y - defaultOffset) / 2f;
 
             var newRoom = Instantiate(
                 rooms[randomRoom].room, 
@@ -248,7 +249,7 @@ public class DungeonGenerator : MonoBehaviour
 
     void MazeGenerator()
     {
-        board = new List<Cell>();
+        board = new List<Cell>(); // Creates the board of cells
         cells = new List<Cell>();
 
         for (int i = 0; i < size.x; i++) // This creates the board, with the width and height of the grid
@@ -259,120 +260,101 @@ public class DungeonGenerator : MonoBehaviour
             }
         }
 
-        int currentCell = startPos;
+        List<int> frontier = new List<int>(); // A frontier is an adjacent unvisited cell in the maze
 
-        Stack<int> path = new Stack<int>(); // A stack is like a list though it can be imagined like a stack of plates, where you mostly are in control of the top item(most recent)
+        int startCell = startPos; // Sets the starting cell
+        AddFrontiers(startCell, frontier); // Adds all adjacent unvisited valid neighbours of the current cell
 
         int k = 0; // Keeps track what loop we're at
 
-        while(k < maxRooms) // We don't need a giant maze
+        while (frontier.Count > 0 && k < maxRooms) // We don't need a giant maze, makes sure there are frontiers
         {
             k++;
 
-            board[currentCell].visited = true;
-            board[currentCell].index = k;
-            cells.Add(board[currentCell]);
+            int randIndex = Random.Range(0, frontier.Count); 
+            int currentCell = frontier[randIndex]; // Chooses a random frontier cell
+            frontier.RemoveAt(randIndex); // The cell is no longer a frontier since it is added to the active cells
 
-            if (currentCell == board.Count - 1) // If it reaches the last cell in the gris the algorithm will stop
+            board[currentCell].visited = true; //  Sets the cell to visited
+            board[currentCell].index = k; // Gives the index to the cell
+            cells.Add(board[currentCell]); // Adds the cell to the cells list
+
+            List<int> visitedNeighbours = GetVisitedNeighbours(currentCell); //  Gets all the adjacent visited cells
+
+            if (visitedNeighbours.Count > 0) // Makes sure the list isn't empty
             {
-                break;
+                int connectCell = visitedNeighbours[Random.Range(0, visitedNeighbours.Count)]; // Chooses a random neighbour to connect to
+                OpenDoor(currentCell, connectCell); // Opens the correct doors of the current cell and the connecting cell
             }
-
-            // Check the cell's neighbours
-            List<int> neighbours = CheckNeighbours(currentCell);
-
-            if (neighbours.Count == 0) // No available neighbours
-            {
-                if (path.Count == 0) 
-                {
-                    break; // Breaks if we reach the last cell 
-                }
-                else
-                {
-                    currentCell = path.Pop(); // Current cell will become the previous cell in the path(pop removes from stack and returns index)
-                }
-            }
-            else
-            {
-                path.Push(currentCell); // Adds current cell on top of the path
-
-                int newCell = neighbours[Random.Range(0, neighbours.Count)]; // Chooses a random neighbouring cell
-
-                #region Door Statuses
-                // Check the direction of the new cell
-                if (newCell > currentCell)
-                {
-                    // Down or right(new cell is greater than current one)
-                    if (newCell - 1 == currentCell) // If new cell - 1 is the current cell we know it's right
-                    {
-                        board[currentCell].status[3][0] = true;
-                        currentCell = newCell; // Sets the new cell to be current and sets the right hand entrance to true
-                        board[currentCell].status[2][0] = true; // Opens the left cell
-                    }
-                    else
-                    {
-                        board[currentCell].status[1][0] = true;
-                        currentCell = newCell; // Sets the new cell to be current and sets the down entrance to true
-                        board[currentCell].status[0][0] = true; // Opens the up cell
-                    }
-                }
-                else
-                {
-                    // Up or left
-                    if (newCell + 1 == currentCell) // If new cell + 1 is the current cell we know it's left
-                    {
-                        board[currentCell].status[2][0] = true;
-                        currentCell = newCell; // Sets the new cell to be current and sets the left hand entrance to true
-                        board[currentCell].status[3][0] = true; // Opens the right cell
-                    }
-                    else
-                    {
-                        board[currentCell].status[0][0] = true;
-                        currentCell = newCell; // Sets the new cell to be current and sets the up entrance to true
-                        board[currentCell].status[1][0] = true; // Opens the down cell
-                    }
-                }
-                #endregion
-            }
+            AddFrontiers(currentCell, frontier); // Gets the frontiers of the current cell
         }
-
         GenerateDungeon();
     }
 
-    List<int> CheckNeighbours(int cell) // Will return a list of cells by taking the position of the current cell
+    void AddFrontiers(int cell, List<int> frontier)
     {
-        List<int> neighbours = new List<int>();
+        int[] directions = { -size.x, size.x, -1, 1 }; // Up down left and right directions
 
-        // Due to this being a 1D array size.x represents the number of columns, and size.y is the number of rows
-        // To get the index of something, it must be rounded to an int since size is a vector 2 float
-        // e.g. cell = 3 and size.x = 1.0, cell-size.x = 2.0 since it uses a float and this can't be used to index
-
-        // Check up neighbour
-        if (cell -  size.x >= 0 && !board[cell - size.x].visited) // Checks if there is a spot above it(if >= 0 then it won't be on the board) and if that cell has been visited
+        foreach (int dir in directions) // Loops through each direction
         {
-            neighbours.Add(cell - size.x);
-        }
+            int neighbour = cell + dir; // Gets the neighbouring cell by adding the direction to the current cell   
 
-        // Check down neighbour
-        if (cell + size.x < board.Count && !board[cell + size.x].visited) // Checks if there is a spot below it(if > board height then won't be on board) and if that cell has been visited
+            if (neighbour >= 0 && neighbour < board.Count && !board[neighbour].visited) // If the neighbour is valid
+            {
+                // Checks the neighbour doesn't wrap to the above or below row, if so continue skips the loop iteration
+                if (dir == -1 && cell % size.x == 0) continue; // Modulo cell since that may be the left most
+                if (dir == 1 && cell % size.x == size.x - 1) continue; // Modulo the cell to see if its the right most
+
+                if (!frontier.Contains(neighbour)) // Makes sure the frontier doesn't exist
+                    frontier.Add(neighbour); // Adds the neighbour to the frontier(which affects the frontier list everywhere)
+            }
+        }
+    }
+
+    List<int> GetVisitedNeighbours(int cell)
+    {
+        List<int> visited = new List<int>();
+        int[] directions = { -size.x, size.x, -1, 1 }; // All direction additions
+
+        foreach (int dir in directions) // Loops throguh directions
         {
-            neighbours.Add(cell + size.x);
-        }
+            int neighbor = cell + dir; // Finds the neighbour by adding the direction to the cellz
 
-        // Check left neighbour
-        if (cell % size.x != 0 && !board[cell - 1].visited) // Checks if there is a spot to the left of it(they will be a multiple of size if on left side) and if that cell has been visited
+            if (neighbor >= 0 && neighbor < board.Count && board[neighbor].visited) // Ensures the neighbour is valid and has been visited
+            {
+                // Prevents the neighbour from wrapping horizontally
+                if (dir == -1 && cell % size.x == 0) continue;
+                if (dir == 1 && cell % size.x == size.x - 1) continue;
+
+                visited.Add(neighbor); // Adds the visited neighbour to the list
+            }
+        }
+        return visited;
+    }
+
+    void OpenDoor(int from, int to)
+    {
+        int dir = to - from; // Gets the direction of the connecting cell, e.g. to 4 from 7, 7 - 4 = 3, which is down
+
+        if (dir == -size.x) // If the direction is up
         {
-            neighbours.Add(cell - 1);
+            board[from].status[0][0] = true; // Opens the up door of the current cell
+            board[to].status[1][0] = true; // Opens the down door of the next cell
         }
-
-
-
-        // Check right neighbour
-        if ((cell + 1) % size.x != 0 && !board[cell + 1].visited) // Checks if there is a spot to the right of it(the spot + 1 will be the size of the row) and if that cell has been visited
+        else if (dir == size.x) // If the direction is down
         {
-            neighbours.Add(cell + 1);
+            board[from].status[1][0] = true; // Down door of current cell 
+            board[to].status[0][0] = true;   // Up door of connecting cell
         }
-
-        return neighbours;
+        else if (dir == -1) // If the direction is left
+        {
+            board[from].status[2][0] = true; // Left door of current cell
+            board[to].status[3][0] = true;   // Right door of connecting cell
+        }
+        else if (dir == 1) // If the direction is right
+        {
+            board[from].status[3][0] = true; // Right door of current cell
+            board[to].status[2][0] = true;   // Left door of current cell
+        }
     }
 }
