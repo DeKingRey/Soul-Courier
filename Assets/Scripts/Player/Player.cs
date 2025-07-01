@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     #region Movement Variables
     [Header("Movement")]
     public float speed;
+    public float sprintSpeed;
     public float rotationSpeed = 0.1f;
     private float rotationVelocity;
 
@@ -104,7 +105,14 @@ public class Player : MonoBehaviour
             animator.SetBool("isWalking", true);
 
             // Sets velocity to the direction of the movement input
-            velocity = moveDir.normalized * speed;
+            if (Input.GetKey(KeyCode.LeftShift)) // If left shift is being held down, the player sprints
+            {
+                velocity = moveDir.normalized * sprintSpeed;
+            }
+            else
+            {
+                velocity = moveDir.normalized * speed;
+            }
         }
         else
         {

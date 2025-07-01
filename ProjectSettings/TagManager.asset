@@ -15,6 +15,7 @@ TagManager:
   - Reward
   - ExitDoors
   - Start
+  - Minimap
   layers:
   - Default
   - TransparentFX

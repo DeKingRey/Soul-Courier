@@ -15,10 +15,18 @@ public class RoomSpawner : MonoBehaviour
     private bool currentRoom;
 
     public Vector2Int roomSize = new Vector2Int(4, 4);
+    
+    private Minimap minimap;
+    private SpriteRenderer[] minimapSprites;
+    private bool entered;
 
     void Start()
     {
         exits = GetComponent<RoomBehaviour>().activeDoors.ToArray();
+
+        minimap = GameObject.FindGameObjectWithTag("Minimap").GetComponent<Minimap>();
+        minimapSprites = GetComponentsInChildren<SpriteRenderer>(true); // The true parameter gets all sprite renderers(despite active)
+
         OpenDoors();
         SpawnEnemies();          
     }
@@ -111,15 +119,22 @@ public class RoomSpawner : MonoBehaviour
         {
             currentRoom = true;
 
+            // Enables enemies in the room and closes doors to the room
             if (enemiesRemain)
             {
                 foreach (UnityEngine.AI.NavMeshAgent enemy in enemies)
                 {
+                    if (enemy == null || enemy.gameObject == null) continue; // Skips the loop iteration if the enemy has been killed
                     enemy.enabled = true;
                     enemy.gameObject.transform.GetChild(0).gameObject.SetActive(true);
                 }
-
                 CloseDoors();
+            }
+
+            if (!entered)
+            {
+                entered = true;
+                minimap.EnableRoom(minimapSprites);
             }
         }
     }
