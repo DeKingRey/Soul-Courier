@@ -63,8 +63,6 @@ public class GameManager : MonoBehaviour
         float sliderHeight = quotaSlider.GetComponent<RectTransform>().rect.height; // The slider goes bottom to top, so this gets the height of it
         targetQuota.anchoredPosition = new Vector2(targetQuota.anchoredPosition.x, targetValue * sliderHeight); // Keeps the x position the same, and calculates the y position by multiplying the target value by the slider height
 
-        Debug.Log(sliderHeight + " " + targetValue);
-
         // targetValue = 0.5, sliderHeight = 200, 0.5 * 200 = 100
     }
 

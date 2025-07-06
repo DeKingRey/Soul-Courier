@@ -45,7 +45,7 @@ public class DungeonGenerator : MonoBehaviour
         public int CanSpawn(int i)
         {
             // 0 - Cannot Spawn 1 - Can Spawn 2 - HAS to spawn at position
-             
+
             if (i >= minPos && i <= maxPos) // If the iteratipon is between the min and max iteration then continue
             {
                 return compulsory ? 2 : 1; // If compulsory it returns 2, else returns 1
@@ -58,7 +58,7 @@ public class DungeonGenerator : MonoBehaviour
     public Vector2Int size; // Size of grid
     public int startPos = 0; // Starting point on grid(generally 0)
     public int defaultOffset;
-    public Rule[] rooms; 
+    public Rule[] rooms;
     public int maxRooms;
 
     List<Cell> board;
@@ -87,7 +87,7 @@ public class DungeonGenerator : MonoBehaviour
                 int p = rooms[k].CanSpawn(cell.index); // Checks rules for current position
 
                 if (CheckRoomPlacement(i, j, rooms[k].roomSize, rooms[k].compulsory))
-                    {
+                {
                     if (p == 2 && !compulsoryUsed[k]) // If the room has to spawn at a certain position
                     {
                         randomRoom = k;
@@ -111,7 +111,7 @@ public class DungeonGenerator : MonoBehaviour
                         int chance = rooms[availableRoom].spawnChance;
                         for (int a = 0; a < chance; a++)
                         {
-                            potentialRooms.Add(availableRoom);  
+                            potentialRooms.Add(availableRoom);
                         }
                     }
                     randomRoom = potentialRooms[Random.Range(0, potentialRooms.Count)]; // Gets the random room 
@@ -129,7 +129,7 @@ public class DungeonGenerator : MonoBehaviour
             float offsetY = j * defaultOffset + (offset.y - defaultOffset) / 2f;
 
             var newRoom = Instantiate(
-                rooms[randomRoom].room, 
+                rooms[randomRoom].room,
                 new Vector3(offsetX, 0, -offsetY),
                 Quaternion.identity,
                 transform
@@ -172,9 +172,9 @@ public class DungeonGenerator : MonoBehaviour
                         {
                             cell.status[1][n] = true; // Checks if there is a cell below the current one
                         }
-                    } 
-                   
-                } 
+                    }
+
+                }
 
                 for (int n = 0; n < rSize.y; n++) // Loops through the rooms vertical size
                 {
@@ -194,7 +194,7 @@ public class DungeonGenerator : MonoBehaviour
                     if (rightIndex + 1 < board.Count && cells.Contains(board[rightIndex + 1])) // Checks the actual cell to the right
                     {
                         if (System.Array.Exists(board[rightIndex + 1].status[2], s => s))
-                        {                            
+                        {
                             cell.status[3][n] = true;
                         }
                     }
@@ -204,9 +204,9 @@ public class DungeonGenerator : MonoBehaviour
 
             newRoom.UpdateRoom(cell.status); // Sets the door statuses
             newRoom.name = $"{rooms[randomRoom].room.gameObject.name} {i}-{j}";
-        #endregion
+            #endregion
+        }
     }
-}
 
     bool CheckRoomPlacement(int x, int y, Vector2Int roomSize, bool required)
     {
@@ -222,8 +222,8 @@ public class DungeonGenerator : MonoBehaviour
                 if (checkX >= size.x || checkY >= size.y) return false; // Returns false if it goes out of bounds
 
                 if (checkX == size.x - 1 && dx > 0 || checkY == size.y - 1 && dy > 0) return false; // Makes sure the final room spawns
-                
-                
+
+
                 int index = checkX + checkY * size.x;
                 if (board[index].occupied || board[index] == cells[cells.Count - 1] && !required) return false; // Checks that the cells aren't already visited and it doesn't take the final cell
             }
@@ -271,7 +271,7 @@ public class DungeonGenerator : MonoBehaviour
         {
             k++;
 
-            int randIndex = Random.Range(0, frontier.Count); 
+            int randIndex = Random.Range(0, frontier.Count);
             int currentCell = frontier[randIndex]; // Chooses a random frontier cell
             frontier.RemoveAt(randIndex); // The cell is no longer a frontier since it is added to the active cells
 
@@ -288,6 +288,7 @@ public class DungeonGenerator : MonoBehaviour
             }
             AddFrontiers(currentCell, frontier); // Gets the frontiers of the current cell
         }
+        EnsureConnections();
         GenerateDungeon();
     }
 
@@ -356,5 +357,71 @@ public class DungeonGenerator : MonoBehaviour
             board[from].status[3][0] = true; // Right door of current cell
             board[to].status[2][0] = true;   // Left door of current cell
         }
+
     }
+
+    void EnsureConnections()
+    {
+        // This function will use DFS to ensure all cells are connected
+        
+        HashSet<int> visitedSet = new HashSet<int>(); // A hashset only has unique elements
+        Stack<int> stack = new Stack<int>();
+
+        int root = cells[0] != null ? board.IndexOf(cells[0]) : 0; // Gets the first visited cell
+        stack.Push(root); // Adds start pos as the beginning element on the stack
+        visitedSet.Add(root);
+
+        while (stack.Count > 0)
+        {
+            int current = stack.Pop(); // Gets and removes the top element of the stack
+            foreach (int neighbour in GetAdjacentVisited(current))
+            {
+                if (!visitedSet.Contains(neighbour)) // If the set doesn't contain the neighbour it is pushed on top of the stack and added to the set
+                {
+                    visitedSet.Add(neighbour);
+                    stack.Push(neighbour);
+                }
+            }
+        }
+
+        for (int i = 0; i < board.Count; i++)
+        {
+            if (board[i].visited && !visitedSet.Contains(i)) // If the set doesn't contain it but it is visited on the board
+            {
+                foreach (int neighbour in GetAdjacentVisited(i))
+                {
+                    OpenDoor(i, neighbour);
+                    visitedSet.Add(i);
+                }
+            }
+        }
+    }
+
+    List<int> GetAdjacentVisited(int index)
+    {
+        List<int> neighbours = new List<int>();
+        int x = index % size.x;
+        int y = index / size.x;
+
+        void TryAdd(int dx, int dy, int dir)
+        {
+            int nx = x + dx; // Gets horizontal neighbours
+            int ny = y + dy; // Gets vertical neighbours
+            if (nx >= 0 && nx < size.x && ny >= 0 && ny < size.y) // Ensures the cell is valid
+            {
+                int nIndex = nx + ny * size.x;
+                if (board[nIndex].visited && board[nIndex].status[dir][0])
+                {
+                    neighbours.Add(nIndex);
+                }    
+            }
+        }
+
+        TryAdd(0, -1, 0); // Up
+        TryAdd(0, 1, 1); // Dpwn
+        TryAdd(-1, 0, 2); // Left
+        TryAdd(1, 0, 3); // Right
+
+        return neighbours;
+    }   
 }

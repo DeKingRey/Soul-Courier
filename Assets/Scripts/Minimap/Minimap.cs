@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Minimap : MonoBehaviour
 {
-    private Vector3 startRotation; // Eulers are a vector3
+    private float yRotation;
 
+
+    [Header("Map Switching")]
     private Camera mapCamera;
     public GameObject minimapUI;
     public GameObject fullMapUI;
@@ -18,23 +20,30 @@ public class Minimap : MonoBehaviour
     void Start()
     {
         // Use euler angles, as quaternions are not easy to use in code(4D!), eulers are to access the raw x, y, and z values of rotation and work with quaternions
+
         mapCamera = GetComponent<Camera>();
-        startRotation = transform.rotation.eulerAngles;
     }
 
 
     // MAKE THE FULL MAP CENTERED AND CONSTANT
     void Update()
     {
-        // Gets the parents Y rotation as this is the direction the player will be facing
-        float yRotation = transform.parent.rotation.eulerAngles.y;
+        bool showingFullMap = fullMapUI.activeSelf; // Bool which depends on whether the game object is active or not
+        if (!showingFullMap)
+        {
+            // Gets the parents Y rotation as this is the direction the player will be facing
+            yRotation = transform.parent.rotation.eulerAngles.y;
+        }
+        else
+        {
+            yRotation = 0;
+        }
+        
         // Locks the X and Z rotation, and makes the Y rotation relative to the player/main camera
-        transform.rotation = Quaternion.Euler(startRotation.x, yRotation, startRotation.z);
+        transform.localRotation = Quaternion.Euler(90f, yRotation, 0); // Eulers are a vector 3
 
         if (Input.GetKeyDown(KeyCode.M)) // Map switches when pressing 'M'
         {
-            bool showingFullMap = fullMapUI.activeSelf; // Bool which depends on whether the game object is active or not
-
             if (showingFullMap) // If the full map is displaying then CLOSE it
             {
                 // Sets maps on and off (may want to turn off other UI elements too)

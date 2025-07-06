@@ -28,6 +28,9 @@ public class Player : MonoBehaviour
     public float maxHealth;
     public float health;
     public Image[] hearts;
+    private PlayerDamageEffects damageEffects;
+    public float invulnerabilityTime;
+    private bool isInvulnerable;
     #endregion
 
     #region Bullet Variables
@@ -61,6 +64,8 @@ public class Player : MonoBehaviour
         spawnPos = GameObject.FindGameObjectWithTag("Start").transform.position;
 
         transform.position = new Vector3(spawnPos.x, 5, spawnPos.z);
+
+        damageEffects = GetComponent<PlayerDamageEffects>();
     }
 
     void Update()
@@ -139,24 +144,6 @@ public class Player : MonoBehaviour
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y * 0.5f, rb.velocity.z);
         }
         #endregion
-
-        /*#region Rotation
-        Ray cameraRay = mainCam.ScreenPointToRay(Input.mousePosition);
-        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
-        float rayLength;
-
-        if (groundPlane.Raycast(cameraRay, out rayLength))
-        {
-            Vector3 pointToLook = cameraRay.GetPoint(rayLength);
-            transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
-        }
-
-        // Gets the angle the player is moving at relative to the camera
-        float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + mainCam.eulerAngles.y;
-
-        // Smoothes the angle 
-        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref rotationVelocity, rotationSpeed);
-        #endregion*/
     }
 
     void Shoot()
@@ -173,24 +160,39 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        health -= damage;
-
-        // Loops through each item in the hearts array
-        for (int i = 0; i < hearts.Length; i++)
+        if (!isInvulnerable)
         {
-            // Clamps the value of the current health minus the current index between 0 and 1
-            // E.g: Health = 1.5, first iteration 1.5-0 = 0 which clamped is 1 so the first heart is full
-            // second iteration 1.5-1 = 0.5 so clamped to 0.5 meaning the second heart is half full
-            float heartAmount = Mathf.Clamp(health - i, 0f, 1f);
+            health -= damage;
+            damageEffects.TakeDamageEffects();
 
-            // Sets the fill amount of the current heart
-            hearts[i].fillAmount = heartAmount;
-        }
+            // Loops through each item in the hearts array
+            for (int i = 0; i < hearts.Length; i++)
+            {
+                // Clamps the value of the current health minus the current index between 0 and 1
+                // E.g: Health = 1.5, first iteration 1.5-0 = 0 which clamped is 1 so the first heart is full
+                // second iteration 1.5-1 = 0.5 so clamped to 0.5 meaning the second heart is half full
+                float heartAmount = Mathf.Clamp(health - i, 0f, 1f);
 
-        if (health <= 0)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                // Sets the fill amount of the current heart
+                hearts[i].fillAmount = heartAmount;
+            }
+
+            if (health <= 0)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+
+            StartCoroutine(InvulnerabilityCountdown());
         }
+    }
+
+    private IEnumerator InvulnerabilityCountdown()
+    {
+        isInvulnerable = true;
+
+        yield return new WaitForSeconds(invulnerabilityTime);
+
+        isInvulnerable = false;
     }
 
     public void Pickup(string item)
