@@ -88,7 +88,7 @@ public class Enemy : MonoBehaviour
             }
             
             // Makes the enemy flash white
-            foreach (Renderer renderer in renderers)
+            foreach (Renderer renderer in renderers)    
             {
                 renderer.material = bullet.hitMat;
             }
@@ -137,13 +137,13 @@ public class Enemy : MonoBehaviour
         while (elapsed < stunTime)
         {
             agent.enabled = false;
-            animator.enabled = false;
+            animator.SetBool("moving", false);
             elapsed += Time.deltaTime;
 
             yield return null;
         }
 
         agent.enabled = true;
-        animator.enabled = true;
+        animator.SetBool("moving", true);
     }
 }

@@ -7,23 +7,15 @@ public class EnemyWeapon : MonoBehaviour
     private bool canDamage;
     private bool hasDamaged;
 
-    public float weaponLength;
+    //public float weaponLength;
     public float damage;
 
-    void Update()
+    void OnTriggerEnter(Collider obj)
     {
-        if (canDamage && !hasDamaged)
+        if (obj.CompareTag("Player") && canDamage && !hasDamaged)
         {
-            RaycastHit hit;
-
-            if (Physics.Raycast(transform.position, -transform.up, out hit, weaponLength))
-            {
-                if (hit.transform.TryGetComponent(out Player player))
-                {
-                    player.TakeDamage(damage);
-                    hasDamaged = true;
-                }
-            }
+            obj.GetComponent<Player>().TakeDamage(damage);
+            hasDamaged = true;
         }
     }
 
@@ -36,11 +28,5 @@ public class EnemyWeapon : MonoBehaviour
     public void EndAttack()
     {
         canDamage = false;
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(transform.position, transform.position - transform.up * weaponLength);
     }
 }
