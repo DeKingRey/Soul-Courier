@@ -391,7 +391,7 @@ public class DungeonGenerator : MonoBehaviour
                 foreach (int neighbour in GetAdjacentVisited(i))
                 {
                     OpenDoor(i, neighbour);
-                    visitedSet.Add(i);
+                    //visitedSet.Add(i);
                 }
             }
         }

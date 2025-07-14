@@ -6,23 +6,35 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Quota")]
     public float quota;
     public float maxQuota;
     public Slider quotaSlider;
     public RectTransform targetQuota;
+    private float currentVelocity = 0;
 
     private Player player;
 
+    [Header("Items UI")]
     public TMP_Text stampText;
     public TMP_Text keyText;
     public TMP_Text bombText;
 
     private bool begin;
 
+    [Header("Enemy")]
+    public GameObject soul;
+    public GameObject deathParticles;
+    public GameObject ghost;
+
     void Start()
     {
         player = FindObjectOfType<Player>();
         StartCoroutine(BeginEnemyCount());
+
+        Enemy.soul = soul;
+        Enemy.deathParticles = deathParticles;
+        Enemy.ghost = ghost;
     }
 
     void Update()
@@ -68,7 +80,8 @@ public class GameManager : MonoBehaviour
 
     void UpdateItems()
     {
-        quotaSlider.value = player.souls / maxQuota;
+        float currentValue = Mathf.SmoothDamp(quotaSlider.value, player.souls / maxQuota, ref currentVelocity, 100 * Time.deltaTime);
+        quotaSlider.value = currentValue;
         stampText.text = player.stamps.ToString();
         keyText.text = player.keys.ToString();
     }

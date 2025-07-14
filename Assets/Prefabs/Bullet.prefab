@@ -112,8 +112,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dc8a4848dfc24b43891b9fa2ffe3ec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 20
   damage: 1
+  knockbackForce: 5
+  stunTime: 0.3
+  impactPrefab: {fileID: 4897667329618739462, guid: 361d61f85c28b4a4db3e07e9a061436b, type: 3}
+  hitImpactPrefab: {fileID: 2395335042003127892, guid: 2f84195b62713fb4ab98c420dd2d28a0, type: 3}
+  hitMat: {fileID: 2100000, guid: 97595234ecdfd964bb19817dbfa58355, type: 2}
 --- !u!114 &-4180692982407399414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27bef8f47ee793641a09af8b21b503a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyTime: 4
 --- !u!54 &5017757938428773757
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -139,6 +145,6 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 1
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1

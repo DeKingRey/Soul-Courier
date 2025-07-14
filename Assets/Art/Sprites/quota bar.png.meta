@@ -1,0 +1,697 @@
+fileFormatVersion: 2
+guid: edbf0fb83b2cebe4e9453c2d8a976a78
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: quota bar_0
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 10272
+        width: 378
+        height: 2499
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3b95cb3825481c41a375249b12e20c4
+      internalID: -653398132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quota bar_1
+      rect:
+        serializedVersion: 2
+        x: 953
+        y: 10278
+        width: 344
+        height: 2250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 180, z: 0, w: 40}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61643fbbd2162214b9ef74cf78234182
+      internalID: 1450537371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quota bar_2
+      rect:
+        serializedVersion: 2
+        x: 1703
+        y: 10278
+        width: 344
+        height: 2250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 180, z: 0, w: 35}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80adb9fa2a1f5104c9f79a0bbead728b
+      internalID: -88881747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quota bar_3
+      rect:
+        serializedVersion: 2
+        x: 2453
+        y: 10278
+        width: 344
+        height: 2250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 180, z: 0, w: 35}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2818006fdde14b44b8a3d65f20fbecae
+      internalID: -346020782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quota bar_4
+      rect:
+        serializedVersion: 2
+        x: 3203
+        y: 10278
+        width: 344
+        height: 2250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 180, z: 0, w: 35}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7efcd2544822dd84ea904a907dbcac9e
+      internalID: 1761972910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quota bar_5
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 7716
+        width: 344
+        height: 2250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 180, z: 0, w: 35}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18ae130182a2c8d429be33c22614e49e
+      internalID: -2145655883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quota bar_6
+      rect:
+        serializedVersion: 2
+        x: 953
+        y: 7716
+        width: 344
+        height: 2250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 180, z: 0, w: 35}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ded509b0cb97434b828a525f5a9cc82
+      internalID: -1330494497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quota bar_7
+      rect:
+        serializedVersion: 2
+        x: 1703
+        y: 7716
+        width: 344
+        height: 2250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 180, z: 0, w: 35}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: feb669651c9f9a54d9ee4d61348cf587
+      internalID: 475628792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quota bar_8
+      rect:
+        serializedVersion: 2
+        x: 2453
+        y: 7716
+        width: 344
+        height: 2250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 180, z: 0, w: 35}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 269009eca49e49c4ea8059cce1b29432
+      internalID: -559391272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quota bar_9
+      rect:
+        serializedVersion: 2
+        x: 3203
+        y: 7716
+        width: 344
+        height: 2250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 180, z: 0, w: 35}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a04e08bdaa6837d40a8832c378a49ba2
+      internalID: 622716175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quota bar_10
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 5159
+        width: 344
+        height: 2250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 180, z: 0, w: 35}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 368fabc6abb238046961da71ca737b3f
+      internalID: 12956399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quota bar_11
+      rect:
+        serializedVersion: 2
+        x: 953
+        y: 5159
+        width: 344
+        height: 2250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 180, z: 0, w: 35}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3945e95a75c5754d8a2f363c491f24d
+      internalID: 1521198736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quota bar_12
+      rect:
+        serializedVersion: 2
+        x: 1703
+        y: 5159
+        width: 344
+        height: 2250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 180, z: 0, w: 35}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5308b9e5f4f148342a7e1af553215519
+      internalID: -1855820607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quota bar_13
+      rect:
+        serializedVersion: 2
+        x: 2453
+        y: 5167
+        width: 344
+        height: 2250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 180, z: 0, w: 35}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8814beabe84d274191ec191f8530f6a
+      internalID: 2408138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quota bar_14
+      rect:
+        serializedVersion: 2
+        x: 3203
+        y: 5159
+        width: 344
+        height: 2250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 180, z: 0, w: 35}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b9da6cbaab88884d824acdcc545f641
+      internalID: 2015520937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quota bar_15
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 2597
+        width: 344
+        height: 2250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 180, z: 0, w: 35}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5e875c8bd78509468330533b3c6d5e5
+      internalID: 1990835218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quota bar_16
+      rect:
+        serializedVersion: 2
+        x: 953
+        y: 2608
+        width: 344
+        height: 2250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 180, z: 0, w: 35}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08beb02b7f1bca446a66a73dc39bda0e
+      internalID: 1680310005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quota bar_17
+      rect:
+        serializedVersion: 2
+        x: 1703
+        y: 2597
+        width: 344
+        height: 2250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 180, z: 0, w: 35}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3af648004e9d8414f8ba5407aee2dc9b
+      internalID: -1580075070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quota bar_18
+      rect:
+        serializedVersion: 2
+        x: 2453
+        y: 2597
+        width: 344
+        height: 2250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 180, z: 0, w: 35}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5a71039abecb2c42a298a0c033eae31
+      internalID: -1170374085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quota bar_19
+      rect:
+        serializedVersion: 2
+        x: 3203
+        y: 2597
+        width: 344
+        height: 2250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 180, z: 0, w: 35}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 168759e09d4129b4199892ba1207bb56
+      internalID: -1795200880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quota bar_20
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 35
+        width: 344
+        height: 2249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 180, z: 0, w: 35}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d75c41ceccd390f469d725a100b70179
+      internalID: 2145180635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quota bar_21
+      rect:
+        serializedVersion: 2
+        x: 953
+        y: 35
+        width: 344
+        height: 2249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 180, z: 0, w: 35}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9577b9d6b6d4ebd409216ba3dd428712
+      internalID: -1032888941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quota bar_22
+      rect:
+        serializedVersion: 2
+        x: 1703
+        y: 35
+        width: 344
+        height: 2249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 180, z: 0, w: 35}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7916d6793dbd104fbba7dc9295f146c
+      internalID: -1040852764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quota bar_23
+      rect:
+        serializedVersion: 2
+        x: 2453
+        y: 35
+        width: 344
+        height: 2249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 180, z: 0, w: 35}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c08fe2ceae045d479a65d86ca470db6
+      internalID: -1901435832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quota bar_24
+      rect:
+        serializedVersion: 2
+        x: 3203
+        y: 35
+        width: 344
+        height: 2249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 180, z: 0, w: 35}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42b3d729f9b903946b08b1701aba4444
+      internalID: -204001148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 28832ac4a0b876942acf6b7c009e0ff2
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      quota bar_1: 1450537371
+      quota bar_11: 1521198736
+      quota bar_0: -653398132
+      quota bar_7: 475628792
+      quota bar_15: 1990835218
+      quota bar_2: -88881747
+      quota bar_13: 2408138
+      quota bar_4: 1761972910
+      quota bar_10: 12956399
+      quota bar_8: -559391272
+      quota bar_19: -1795200880
+      quota bar_22: -1040852764
+      quota bar_24: -204001148
+      quota bar_5: -2145655883
+      quota bar_21: -1032888941
+      quota bar_9: 622716175
+      quota bar_12: -1855820607
+      quota bar_14: 2015520937
+      quota bar_17: -1580075070
+      quota bar_6: -1330494497
+      quota bar_16: 1680310005
+      quota bar_20: 2145180635
+      quota bar_23: -1901435832
+      quota bar_3: -346020782
+      quota bar_18: -1170374085
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

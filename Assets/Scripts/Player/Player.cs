@@ -204,12 +204,11 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter(Collider obj)
     {
-        if (obj.tag == "Enemy")
+        /*if (obj.tag == "Enemy")
         {
             Enemy enemy = obj.GetComponent<Enemy>();
             TakeDamage(enemy.damage);
-            Destroy(enemy.gameObject);
-        }
+        }*/
 
         if (obj.tag == "DeliveryRoom")
         {
