@@ -28,7 +28,12 @@ public class Player : MonoBehaviour
     [Header("Health")]
     public float maxHealth;
     public float health;
-    public Image[] hearts;
+
+    public Transform heartsContainer;
+    public Image defaultHeartSlotUI;
+    public Image defaultHeartUI;
+    public List<GameObject> heartsUI = new List<GameObject>();
+
     private PlayerDamageEffects damageEffects;
     public float invulnerabilityTime;
     private bool isInvulnerable;
@@ -67,6 +72,12 @@ public class Player : MonoBehaviour
         transform.position = new Vector3(spawnPos.x, 5, spawnPos.z);
 
         damageEffects = GetComponent<PlayerDamageEffects>();
+
+
+        foreach (Transform heartImage in heartsContainer)
+        {
+            if (heartImage.gameObject.CompareTag("Heart")) heartsUI.Add(heartImage.gameObject);
+        }
     }
 
     void Update()
@@ -161,13 +172,12 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        if (!isInvulnerable)
+        if (!isInvulnerable || damage <= 0)
         {
-            health -= damage;
-            damageEffects.TakeDamageEffects();
+            health = Mathf.Clamp(health - damage, 0f, maxHealth); // Clamps health between 0 and max to prevent overhealing
 
             // Loops through each item in the hearts array
-            for (int i = 0; i < hearts.Length; i++)
+            for (int i = 0; i < heartsUI.Count; i++)
             {
                 // Clamps the value of the current health minus the current index between 0 and 1
                 // E.g: Health = 1.5, first iteration 1.5-0 = 0 which clamped is 1 so the first heart is full
@@ -175,7 +185,7 @@ public class Player : MonoBehaviour
                 float heartAmount = Mathf.Clamp(health - i, 0f, 1f);
 
                 // Sets the fill amount of the current heart
-                hearts[i].fillAmount = heartAmount;
+                heartsUI[i].GetComponent<Image>().fillAmount = heartAmount;
             }
 
             if (health <= 0)
@@ -183,7 +193,37 @@ public class Player : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
 
-            StartCoroutine(InvulnerabilityCountdown());
+            // If health wasn't added
+            if (damage >= 1)
+            {
+                damageEffects.TakeDamageEffects();
+                StartCoroutine(InvulnerabilityCountdown());
+            }
+        }
+    }
+
+    public void UpdateHealth(float amount, Sprite heartImageSprite)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            // Will correctly instantiate and position the new heart image in the game
+            Image newHeart = Instantiate(defaultHeartUI, heartsContainer); // Adds image as a child of the container 
+            newHeart.sprite = heartImageSprite; // adds the sprite
+            RectTransform rect = newHeart.GetComponent<RectTransform>();
+
+            RectTransform previousHeart = heartsUI[heartsUI.Count - 1].GetComponent<RectTransform>(); // Gets previous hearts rect transform
+            Vector2 newHeartPosition = previousHeart.anchoredPosition + new Vector2(150f, 0); // Adds gap
+            rect.anchoredPosition = newHeartPosition;
+
+            // Will correctly instantiate and position the new heart slot image in the game
+            Image newHeartSlot = Instantiate(defaultHeartSlotUI, heartsContainer); // Adds image as a child of the container 
+            newHeartSlot.sprite = heartImageSprite;
+            RectTransform slotRect = newHeartSlot.GetComponent<RectTransform>();
+
+            slotRect.anchoredPosition = newHeartPosition; // Uses position of current heart
+
+            heartsUI.Add(newHeart.gameObject);
+            TakeDamage(-1); // Increases health
         }
     }
 
@@ -205,12 +245,6 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter(Collider obj)
     {
-        /*if (obj.tag == "Enemy")
-        {
-            Enemy enemy = obj.GetComponent<Enemy>();
-            TakeDamage(enemy.damage);
-        }*/
-
         if (obj.tag == "DeliveryRoom")
         {
             canDeliver = true;

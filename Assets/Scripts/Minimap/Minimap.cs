@@ -42,7 +42,7 @@ public class Minimap : MonoBehaviour
         // Locks the X and Z rotation, and makes the Y rotation relative to the player/main camera
         transform.localRotation = Quaternion.Euler(90f, yRotation, 0); // Eulers are a vector 3
 
-        if (Input.GetKeyDown(KeyCode.M)) // Map switches when pressing 'M'
+        if (Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.Tab)) // Map switches when pressing 'M'
         {
             if (showingFullMap) // If the full map is displaying then CLOSE it
             {

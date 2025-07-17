@@ -6,7 +6,8 @@ public class AnimationChild : MonoBehaviour
 {
     // This script will be to use functions from the parent within the model of an enemies animation events
 
-    public RangedEnemy manaia;
+    public Manaia manaia;
+    public Porotai porotai;
 
     public void ThrowRock()
     {
@@ -15,6 +16,12 @@ public class AnimationChild : MonoBehaviour
 
     public void StartAttack()
     {
-        manaia.StartAttack();
+        if (manaia) manaia.StartAttack();
+        if (porotai) porotai.StartAttack();
+    }
+
+    public void EndAttack()
+    {
+        if (porotai) porotai.EndAttack();
     }
 }

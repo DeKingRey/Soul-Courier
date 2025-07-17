@@ -5,18 +5,19 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    [Header("Prefabs")]
     public static GameObject soul;
     public static GameObject deathParticles;
     public static GameObject ghost;
 
+    [Header("Stats")]
+    public float health;
+    public float value;
+    public float defence = 1f;
+
     private NavMeshAgent agent;
     private Transform target;
     private Animator animator;
-    public float damage;
-    public float health;
-
-    public float value;
-
     private Player player;
 
     private Renderer[] renderers;
@@ -41,9 +42,34 @@ public class Enemy : MonoBehaviour
         //if (agent.enabled && agent.isOnNavMesh) agent.destination = target.position;
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, Bullet bullet)
     {
         health -= damage;
+
+        #region Damage Effects
+        // Spawns hit particle effect
+        if (Physics.Raycast(bullet.transform.position - transform.forward * 0.5f, transform.forward, out RaycastHit hit, 1f))
+        {
+            Instantiate(bullet.hitImpactPrefab,
+            hit.point,
+            Quaternion.LookRotation(hit.normal));
+        }
+        
+        // Makes the enemy flash white
+        foreach (Renderer renderer in renderers)    
+        {
+            renderer.material = bullet.hitMat;
+        }
+        StartCoroutine(FlashRoutine());
+
+        // Gets the direction the enemy should be knocked back in
+        Vector3 knockbackDirection = (transform.position - player.transform.position).normalized;
+        knockbackDirection.y = 0f; // Removes any vertical knockback
+        knockbackDirection.Normalize(); // Normalizes 
+        StartCoroutine(HandleKnockback(knockbackDirection, bullet.knockbackForce));
+
+        StartCoroutine(StunEnemy(bullet.stunTime * defence));
+        #endregion
 
         if (health <= 0)
         {
@@ -66,8 +92,8 @@ public class Enemy : MonoBehaviour
                 {
                     Destroy(component);
                 }
-            }   
-            #endregion         
+            }
+            #endregion
 
             Destroy(gameObject);
         }
@@ -78,31 +104,7 @@ public class Enemy : MonoBehaviour
         if (obj.tag == "Bullet")
         {
             Bullet bullet = obj.GetComponent<Bullet>();
-
-            // Spawns hit particle effect
-            if (Physics.Raycast(bullet.transform.position - transform.forward * 0.5f, transform.forward, out RaycastHit hit, 1f))
-            {
-                Instantiate(bullet.hitImpactPrefab,
-                hit.point,
-                Quaternion.LookRotation(hit.normal));
-            }
-            
-            // Makes the enemy flash white
-            foreach (Renderer renderer in renderers)    
-            {
-                renderer.material = bullet.hitMat;
-            }
-            StartCoroutine(FlashRoutine());
-
-            // Gets the direction the enemy should be knocked back in
-            Vector3 knockbackDirection = (transform.position - player.transform.position).normalized;
-            knockbackDirection.y = 0f; // Removes any vertical knockback
-            knockbackDirection.Normalize(); // Normalizes 
-            StartCoroutine(HandleKnockback(knockbackDirection, bullet.knockbackForce));
-
-            StartCoroutine(StunEnemy(bullet.stunTime));
-
-            TakeDamage(bullet.damage);
+            TakeDamage(bullet.damage, bullet);
             Destroy(bullet.gameObject);
         }
     }
@@ -122,7 +124,7 @@ public class Enemy : MonoBehaviour
         float elapsed = 0f;
         while (elapsed < 0.2f)
         {
-            transform.position += direction * force * Time.deltaTime; // Applies the knockback
+            transform.position += direction * force * defence * Time.deltaTime; // Applies the knockback
             elapsed += Time.deltaTime;
 
             yield return null;
@@ -132,18 +134,19 @@ public class Enemy : MonoBehaviour
     private IEnumerator StunEnemy(float stunTime)
     {
         float elapsed = 0f;
+        float animatorSpeed = animator.speed;
 
         // Disables the enemy until the stun is worn off
         while (elapsed < stunTime)
         {
             agent.enabled = false;
-            animator.SetBool("moving", false);
+            animator.speed = 0; // Pauses the animator
             elapsed += Time.deltaTime;
 
             yield return null;
         }
 
         agent.enabled = true;
-        animator.SetBool("moving", true);
+        animator.speed = animatorSpeed;
     }
 }

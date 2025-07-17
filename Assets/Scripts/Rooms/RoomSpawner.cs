@@ -20,6 +20,9 @@ public class RoomSpawner : MonoBehaviour
     private SpriteRenderer[] minimapSprites;
     private bool entered;
 
+    private List<Transform> spawnpoints = new List<Transform>();
+    private int spawnpointIndex = 0;
+
     void Start()
     {
         exits = GetComponent<RoomBehaviour>().activeDoors.ToArray();
@@ -27,8 +30,16 @@ public class RoomSpawner : MonoBehaviour
         minimap = GameObject.FindGameObjectWithTag("Minimap").GetComponent<Minimap>();
         minimapSprites = GetComponentsInChildren<SpriteRenderer>(true); // The true parameter gets all sprite renderers(despite active)
 
+        foreach (Transform child in GetComponentsInChildren<Transform>(true))
+        {
+            if (child.CompareTag("Spawnpoint"))
+            {
+                spawnpoints.Add(child);
+            }
+        }
+
         OpenDoors();
-        SpawnEnemies();          
+        SpawnEnemies();       
     }
 
     void Update()
@@ -62,15 +73,18 @@ public class RoomSpawner : MonoBehaviour
             if (availableEnemies.Count > 0)
             {
                 GameObject enemyPrefab = availableEnemies[Random.Range(0, availableEnemies.Count)]; // Gets a random available enemy
-                Vector3 spawnPos = GetRandomPosition(); // Gets a random position
+
+                /*Vector3 spawnPos = GetRandomPosition(); // Gets a random position
 
                 float halfWidth = roomSize.x / 2f;
                 float halfDepth = roomSize.y / 2f;
 
                 Vector3 centerOffset = new Vector3(halfWidth, 5, -halfDepth);
-                Vector3 center = transform.position + centerOffset;
-
-                GameObject spawnedEnemy = Instantiate(enemyPrefab, center, Quaternion.identity);
+                Vector3 center = transform.position + centerOffset;*/
+                
+                Transform spawnpoint = spawnpoints[spawnpointIndex];
+                spawnpointIndex++;
+                GameObject spawnedEnemy = Instantiate(enemyPrefab, spawnpoint.position, Quaternion.identity);
 
                 var agent = spawnedEnemy.GetComponent<UnityEngine.AI.NavMeshAgent>(); // Gets the agent of the spawned enemy
                 agent.enabled = false;
