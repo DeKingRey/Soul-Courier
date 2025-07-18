@@ -24,8 +24,8 @@ public class Manawa : MonoBehaviour, IUseAbility
         if (obj.CompareTag("Player"))
         {
             player.health++;
-            player.maxHealth++;
-            player.UpdateHealth(1f, manawaHeartUI);
+            player.tempHearts++;
+            player.UpdateHealth(1f, manawaHeartUI, true);
             Destroy(gameObject);
         }
     }

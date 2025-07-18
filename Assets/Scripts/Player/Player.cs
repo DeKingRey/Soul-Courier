@@ -28,11 +28,13 @@ public class Player : MonoBehaviour
     [Header("Health")]
     public float maxHealth;
     public float health;
+    public float tempHearts;
 
     public Transform heartsContainer;
     public Image defaultHeartSlotUI;
     public Image defaultHeartUI;
     public List<GameObject> heartsUI = new List<GameObject>();
+    private List<GameObject> heartsSlotUI = new List<GameObject>();
 
     private PlayerDamageEffects damageEffects;
     public float invulnerabilityTime;
@@ -77,6 +79,7 @@ public class Player : MonoBehaviour
         foreach (Transform heartImage in heartsContainer)
         {
             if (heartImage.gameObject.CompareTag("Heart")) heartsUI.Add(heartImage.gameObject);
+            else heartsSlotUI.Add(heartImage.gameObject);
         }
     }
 
@@ -174,7 +177,7 @@ public class Player : MonoBehaviour
     {
         if (!isInvulnerable || damage <= 0)
         {
-            health = Mathf.Clamp(health - damage, 0f, maxHealth); // Clamps health between 0 and max to prevent overhealing
+            health = Mathf.Clamp(health - damage, 0f, maxHealth + tempHearts); // Clamps health between 0 and max to prevent overhealing
 
             // Loops through each item in the hearts array
             for (int i = 0; i < heartsUI.Count; i++)
@@ -184,8 +187,30 @@ public class Player : MonoBehaviour
                 // second iteration 1.5-1 = 0.5 so clamped to 0.5 meaning the second heart is half full
                 float heartAmount = Mathf.Clamp(health - i, 0f, 1f);
 
-                // Sets the fill amount of the current heart
-                heartsUI[i].GetComponent<Image>().fillAmount = heartAmount;
+                // Will handle removing temporary hearts
+                if (heartsUI[i].CompareTag("TempHeart"))
+                {
+                    if (damage > 0)
+                    {
+                        tempHearts = Mathf.Max(0, tempHearts - damage); // Ensures temp hearts isn't less than 0
+                    }
+                    if (tempHearts <= 0)
+                    {
+                        Destroy(heartsUI[i]);
+                        Destroy(heartsSlotUI[i]);
+                        heartsUI.Remove(heartsUI[i]);
+                        heartsSlotUI.Remove(heartsSlotUI[i]);
+                    }
+                    else
+                    {
+                        heartsUI[i].GetComponent<Image>().fillAmount = heartAmount;
+                    }
+                }
+                else
+                {
+                    // Sets the fill amount of the current heart
+                    heartsUI[i].GetComponent<Image>().fillAmount = heartAmount;
+                }
             }
 
             if (health <= 0)
@@ -194,7 +219,7 @@ public class Player : MonoBehaviour
             }
 
             // If health wasn't added
-            if (damage >= 1)
+            if (damage > 0)
             {
                 damageEffects.TakeDamageEffects();
                 StartCoroutine(InvulnerabilityCountdown());
@@ -202,7 +227,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void UpdateHealth(float amount, Sprite heartImageSprite)
+    public void UpdateHealth(float amount, Sprite heartImageSprite, bool isTemp)
     {
         for (int i = 0; i < amount; i++)
         {
@@ -223,6 +248,14 @@ public class Player : MonoBehaviour
             slotRect.anchoredPosition = newHeartPosition; // Uses position of current heart
 
             heartsUI.Add(newHeart.gameObject);
+            heartsSlotUI.Add(newHeartSlot.gameObject);
+
+            if (isTemp)
+            {
+                newHeart.tag = "TempHeart";
+                newHeartSlot.tag = "TempHeart";
+            }
+
             TakeDamage(-1); // Increases health
         }
     }

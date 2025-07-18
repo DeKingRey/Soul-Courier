@@ -19,6 +19,7 @@ TagManager:
   - Spawnpoint
   - EnemyCollider
   - Heart
+  - TempHeart
   layers:
   - Default
   - TransparentFX
