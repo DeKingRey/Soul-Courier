@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Ability Database
   m_EditorClassIdentifier: 
   abilities:
-  - abilityPrefab: {fileID: 0}
-    tier: 0
-    type: 0
+  - abilityPrefab: {fileID: 3015114457089825258, guid: d360fd17780338244b725e2f24551c57, type: 3}
+    tier: 2
+    type: 2

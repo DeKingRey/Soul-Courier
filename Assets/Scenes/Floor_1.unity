@@ -650,6 +650,7 @@ RectTransform:
   m_Children:
   - {fileID: 108049312}
   - {fileID: 1938278223}
+  - {fileID: 2009420933}
   m_Father: {fileID: 1002267622}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -871,7 +872,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 480252059}
-  - {fileID: 2009420933}
   m_Father: {fileID: 82367137}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4361,7 +4361,7 @@ RectTransform:
   m_GameObject: {fileID: 695235348}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8000003, y: 0.8000003, z: 0.8000003}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2009420933}
@@ -4369,8 +4369,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00035858154, y: -25.5}
-  m_SizeDelta: {x: 438, y: 193}
+  m_AnchoredPosition: {x: 67.501, y: -150}
+  m_SizeDelta: {x: 236.335, y: 193}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &695235350
 MonoBehaviour:
@@ -4393,7 +4393,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: -848583727, guid: 3abbc89a4e4a0b04baf435793cf4ce51, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5306,7 +5306,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 820550874}
-  m_LocalRotation: {x: -0.041174475, y: 0.0824101, z: 0.003407702, w: 0.9957418}
+  m_LocalRotation: {x: -0.04117448, y: 0.08241013, z: 0.0034077042, w: 0.9957418}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8200,6 +8200,13 @@ MonoBehaviour:
     compulsory: 0
     offset: {x: 24, y: 24}
     roomSize: {x: 1, y: 2}
+    spawnChance: 1
+  - room: {fileID: 2843154979597922313, guid: 8da643fb6aafcca4780f80f56264add1, type: 3}
+    minPos: 5
+    maxPos: 15
+    compulsory: 1
+    offset: {x: 24, y: 24}
+    roomSize: {x: 1, y: 1}
     spawnChance: 1
   maxRooms: 15
 --- !u!1 &1184313996
@@ -12212,14 +12219,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2009420932}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 695235349}
-  m_Father: {fileID: 108049312}
-  m_RootOrder: 1
+  m_Father: {fileID: 82367137}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -12701,7 +12708,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2138480272}
-  m_LocalRotation: {x: 8.761847e-11, y: 0.08248052, z: -6.459648e-12, w: 0.9965927}
+  m_LocalRotation: {x: 1e-45, y: 0.08248053, z: -0, w: 0.9965927}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

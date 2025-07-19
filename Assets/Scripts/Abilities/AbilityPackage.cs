@@ -12,4 +12,13 @@ namespace SoulCourier.Abilities
         Active,
         OneShot
     }
+
+    public enum AbilityTier
+    {
+        S,
+        A,
+        B,
+        C,
+        D
+    }
 }

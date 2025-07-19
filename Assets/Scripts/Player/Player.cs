@@ -179,6 +179,38 @@ public class Player : MonoBehaviour
         {
             health = Mathf.Clamp(health - damage, 0f, maxHealth + tempHearts); // Clamps health between 0 and max to prevent overhealing
 
+            if (damage > 0)
+            {
+                tempHearts = Mathf.Max(0, tempHearts - damage); // Ensures temp hearts isn't less than 0
+            }
+
+            // Gets all temp hearts indexes
+            List<int> tempIndexes = new List<int>();
+            for (int i = 0; i < heartsUI.Count; i++)
+            {
+                if (heartsUI[i].CompareTag("TempHeart"))
+                {
+                    tempIndexes.Add(i);
+                }
+            }
+
+            tempIndexes.Sort();
+            tempIndexes.Reverse();
+
+            // Gets excess temp hearts
+            int tempHeartsKeep = Mathf.CeilToInt(tempHearts); // Gets all hearts to keep e.g. 0.5 = 1(keep 1 heart since 0.5 isn't empty)
+            int excess = tempIndexes.Count - tempHeartsKeep; // Current temp hearts - the ones to keep(gets excess)
+
+            // Removes excess temp hearts
+            for (int i = 0; i < excess; i++)
+            {
+                int indexToRemove = tempIndexes[i]; // Right most temp heart
+                Destroy(heartsUI[indexToRemove]);
+                Destroy(heartsSlotUI[indexToRemove]);
+                heartsUI.RemoveAt(indexToRemove);
+                heartsSlotUI.RemoveAt(indexToRemove);
+            }
+
             // Loops through each item in the hearts array
             for (int i = 0; i < heartsUI.Count; i++)
             {
@@ -186,31 +218,7 @@ public class Player : MonoBehaviour
                 // E.g: Health = 1.5, first iteration 1.5-0 = 0 which clamped is 1 so the first heart is full
                 // second iteration 1.5-1 = 0.5 so clamped to 0.5 meaning the second heart is half full
                 float heartAmount = Mathf.Clamp(health - i, 0f, 1f);
-
-                // Will handle removing temporary hearts
-                if (heartsUI[i].CompareTag("TempHeart"))
-                {
-                    if (damage > 0)
-                    {
-                        tempHearts = Mathf.Max(0, tempHearts - damage); // Ensures temp hearts isn't less than 0
-                    }
-                    if (tempHearts <= 0)
-                    {
-                        Destroy(heartsUI[i]);
-                        Destroy(heartsSlotUI[i]);
-                        heartsUI.Remove(heartsUI[i]);
-                        heartsSlotUI.Remove(heartsSlotUI[i]);
-                    }
-                    else
-                    {
-                        heartsUI[i].GetComponent<Image>().fillAmount = heartAmount;
-                    }
-                }
-                else
-                {
-                    // Sets the fill amount of the current heart
-                    heartsUI[i].GetComponent<Image>().fillAmount = heartAmount;
-                }
+                heartsUI[i].GetComponent<Image>().fillAmount = heartAmount;
             }
 
             if (health <= 0)
@@ -256,7 +264,7 @@ public class Player : MonoBehaviour
                 newHeartSlot.tag = "TempHeart";
             }
 
-            TakeDamage(-1); // Increases health
+            TakeDamage(0); // Increases health
         }
     }
 

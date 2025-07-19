@@ -10,7 +10,10 @@ public class AbilityDatabase : ScriptableObject
     public class Ability
     {
         public GameObject abilityPrefab;
-        public int tier; // A number like 1-5 which will determine the value and rarity of the ability
+
+        [SerializeField]
+        public AbilityTier tier; // A tier from the ability types, D to S
+
         [SerializeField]
         public AbilityType type; // One-shot, Active, or Passive
     }

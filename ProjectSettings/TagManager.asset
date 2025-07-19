@@ -20,6 +20,7 @@ TagManager:
   - EnemyCollider
   - Heart
   - TempHeart
+  - AbilitySpawn
   layers:
   - Default
   - TransparentFX
