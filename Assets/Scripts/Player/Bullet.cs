@@ -6,15 +6,29 @@ public class Bullet : MonoBehaviour
 {
     public float speed;
     public float damage;
+    public float range;
     public float knockbackForce;
     public float stunTime;
     public GameObject impactPrefab;
     public GameObject hitImpactPrefab;
     public Material hitMat;
 
+    private Vector3 startPos;
+
+    void Start()
+    {
+        startPos = transform.position;
+    }
+
     void Update()
     {
         transform.position += transform.forward * speed * Time.deltaTime;
+
+        // Destroys the bullet when it reaches the range
+        if (Vector3.Distance(startPos, transform.position) >= range)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void OnTriggerEnter(Collider other)

@@ -17,16 +17,10 @@ public class Ability : MonoBehaviour
 
     void Update()
     {
-        if (type == AbilityType.Passive) UpdatePassive();
         if (type == AbilityType.Active) UpdateActive();
         if (type == AbilityType.OneShot) UpdateOneShot();
     }
-
-    void UpdatePassive()
-    {
-        abilityLogic.Use(); // Will constantly be used
-    }
-
+    
     void UpdateActive()
     {
         if (Input.GetKeyDown(KeyCode.E))
@@ -40,6 +34,14 @@ public class Ability : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             abilityLogic.Use(); // Will destroy the ability in the use function
+        }
+    }
+
+    void OnTriggerEnter(Collider obj)
+    {
+        if (obj.CompareTag("Player") && type == AbilityType.Passive)
+        {
+            abilityLogic.Use();
         }
     }
 }

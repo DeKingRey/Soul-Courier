@@ -14,5 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilities:
   - abilityPrefab: {fileID: 3015114457089825258, guid: d360fd17780338244b725e2f24551c57, type: 3}
+    tier: 0
+    type: 2
+  - abilityPrefab: {fileID: 3015114457089825258, guid: d360fd17780338244b725e2f24551c57, type: 3}
+    tier: 1
+    type: 2
+  - abilityPrefab: {fileID: 3015114457089825258, guid: d360fd17780338244b725e2f24551c57, type: 3}
     tier: 2
+    type: 2
+  - abilityPrefab: {fileID: 3015114457089825258, guid: d360fd17780338244b725e2f24551c57, type: 3}
+    tier: 3
+    type: 2
+  - abilityPrefab: {fileID: 3015114457089825258, guid: d360fd17780338244b725e2f24551c57, type: 3}
+    tier: 4
     type: 2

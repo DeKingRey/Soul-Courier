@@ -114,6 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   damage: 1
+  range: 7
   knockbackForce: 5
   stunTime: 0.3
   impactPrefab: {fileID: 4897667329618739462, guid: 361d61f85c28b4a4db3e07e9a061436b, type: 3}
