@@ -58,6 +58,7 @@ public class Player : MonoBehaviour
     public bool canShoot;
 
     public Animator animator;
+    public float luck;
 
     private Vector3 spawnPos;
 
