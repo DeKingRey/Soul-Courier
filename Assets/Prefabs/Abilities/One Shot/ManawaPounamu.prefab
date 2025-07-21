@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3015114457089825254}
   - component: {fileID: 3015114457089825253}
   - component: {fileID: 3015114457089825249}
+  - component: {fileID: -7007391367956803622}
   m_Layer: 0
   m_Name: ManawaPounamu
   m_TagString: Untagged
@@ -61,6 +62,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manawaHeartUI: {fileID: 21300000, guid: c637987f8f9a5cf459e47e60ef17138d, type: 3}
+--- !u!114 &-7007391367956803622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3015114457089825258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b77a6f71eb20e1459720aca32bebec8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  icon: {fileID: 0}
 --- !u!1 &6051703595144748294
 GameObject:
   m_ObjectHideFlags: 0

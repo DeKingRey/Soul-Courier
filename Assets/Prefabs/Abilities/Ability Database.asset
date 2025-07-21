@@ -19,12 +19,18 @@ MonoBehaviour:
   - abilityPrefab: {fileID: 3015114457089825258, guid: d360fd17780338244b725e2f24551c57, type: 3}
     tier: 1
     type: 2
+  - abilityPrefab: {fileID: 1120469972536324312, guid: f72b9e40844fadb4b9a006eb7cc47aa8, type: 3}
+    tier: 2
+    type: 0
   - abilityPrefab: {fileID: 3015114457089825258, guid: d360fd17780338244b725e2f24551c57, type: 3}
     tier: 2
     type: 2
-  - abilityPrefab: {fileID: 3015114457089825258, guid: d360fd17780338244b725e2f24551c57, type: 3}
+  - abilityPrefab: {fileID: 8115091804800392295, guid: cb1d08c0b4558f245aa2d0b1c8de1d92, type: 3}
     tier: 3
-    type: 2
-  - abilityPrefab: {fileID: 3015114457089825258, guid: d360fd17780338244b725e2f24551c57, type: 3}
+    type: 0
+  - abilityPrefab: {fileID: 8198814401157519473, guid: 378b4c5a7531a4b4cbe9db83e6f9e8f7, type: 3}
     tier: 4
-    type: 2
+    type: 0
+  - abilityPrefab: {fileID: 1472683424885590334, guid: 152b4f2c87a8163469f3f64dd5302811, type: 3}
+    tier: 4
+    type: 0

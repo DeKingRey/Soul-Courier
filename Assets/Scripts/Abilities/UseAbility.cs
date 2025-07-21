@@ -4,11 +4,13 @@ using UnityEngine;
 using SoulCourier.Abilities;
 using UnityEngine.UI;
 
-public class Ability : MonoBehaviour
+public class UseAbility : MonoBehaviour
 {
     public AbilityType type;
     public Image icon;
     public IUseAbility abilityLogic;
+
+    private bool playerHas;
 
     void Start()
     {
@@ -20,10 +22,23 @@ public class Ability : MonoBehaviour
         if (type == AbilityType.Active) UpdateActive();
         if (type == AbilityType.OneShot) UpdateOneShot();
     }
+
+    void PickUpAbility()
+    {
+        // Player pickup ability and add
+        if (type == AbilityType.Passive)
+        {
+            abilityLogic.Use();
+        }
+        else
+        {
+            playerHas = true;
+        }
+    }
     
     void UpdateActive()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && playerHas)
         {
             abilityLogic.Use(); // Will start a countdown in the use too
         }
@@ -31,7 +46,7 @@ public class Ability : MonoBehaviour
 
     void UpdateOneShot()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && playerHas)
         {
             abilityLogic.Use(); // Will destroy the ability in the use function
         }
@@ -39,9 +54,9 @@ public class Ability : MonoBehaviour
 
     void OnTriggerEnter(Collider obj)
     {
-        if (obj.CompareTag("Player") && type == AbilityType.Passive)
+        if (obj.CompareTag("Player"))
         {
-            abilityLogic.Use();
+            PickUpAbility();
         }
     }
 }

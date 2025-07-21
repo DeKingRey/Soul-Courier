@@ -14,10 +14,14 @@ public class Bullet : MonoBehaviour
     public Material hitMat;
 
     private Vector3 startPos;
+    private Player player;
 
     void Start()
     {
         startPos = transform.position;
+        player = FindObjectOfType<Player>();
+
+        damage *= player.damageMultiplier;
     }
 
     void Update()
@@ -25,7 +29,7 @@ public class Bullet : MonoBehaviour
         transform.position += transform.forward * speed * Time.deltaTime;
 
         // Destroys the bullet when it reaches the range
-        if (Vector3.Distance(startPos, transform.position) >= range)
+        if (Vector3.Distance(startPos, transform.position) >= range * player.rangeMultiplier)
         {
             Destroy(gameObject);
         }

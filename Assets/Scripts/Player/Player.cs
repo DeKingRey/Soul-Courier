@@ -42,12 +42,18 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Bullet Variables
-    [Header("Bullet")]
+    [Header("Combat")]
     public GameObject bullet;
     public Transform shotPoint;
     public float fireRate;
     float nextShot;
     #endregion
+
+    [Header("Stats")]
+    public float damageMultiplier = 1;
+    public float rangeMultiplier = 1;
+    public float luckMultiplier = 1;
+    public float stampMultiplier = 1;
 
     [Header("Items")]
     public float souls;
@@ -58,9 +64,8 @@ public class Player : MonoBehaviour
     public bool canShoot;
 
     public Animator animator;
-    public float luck;
 
-    private Vector3 spawnPos;
+    private GameObject spawnPosObj;
 
     void Start()
     {
@@ -70,12 +75,14 @@ public class Player : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        spawnPos = GameObject.FindGameObjectWithTag("Start").transform.position;
-
-        transform.position = new Vector3(spawnPos.x, 5, spawnPos.z);
+        spawnPosObj = GameObject.FindGameObjectWithTag("Start");
+        if (spawnPosObj)
+        {
+            Vector3 spawnPos = spawnPosObj.transform.position;
+            transform.position = new Vector3(spawnPos.x, 5, spawnPos.z);
+        }
 
         damageEffects = GetComponent<PlayerDamageEffects>();
-
 
         foreach (Transform heartImage in heartsContainer)
         {
@@ -86,6 +93,17 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        // Spawns player at the spawn point if loading times has prevented it previously
+        if (spawnPosObj == null)
+        {
+            spawnPosObj = GameObject.FindGameObjectWithTag("Start");
+            if (spawnPosObj != null)
+            {
+                Vector3 spawnPos = spawnPosObj.transform.position;
+                transform.position = new Vector3(spawnPos.x, 5, spawnPos.z);
+            }
+        } 
+
         Movement();
         
         if (canShoot)
@@ -281,7 +299,7 @@ public class Player : MonoBehaviour
     public void Pickup(string item)
     {
         if (item == "soul") souls++;
-        else if (item == "stamp") stamps++;
+        else if (item == "stamp") stamps += 1 * stampMultiplier;
         else if (item == "key") keys++;
     }
 

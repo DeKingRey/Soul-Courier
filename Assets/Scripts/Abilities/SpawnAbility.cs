@@ -11,15 +11,17 @@ public class SpawnAbility : MonoBehaviour
     void Start()
     {
         // Uses the luck multiplier to choose a random ability tier
-        float luckMultiplier = FindObjectOfType<Player>().luck;
+        float luckMultiplier = FindObjectOfType<Player>().luckMultiplier;
         AbilityTier randomTier = AbilityTierHelper.GetRandomTier(luckMultiplier);
-        TestAbilityTiers(10);
+
+        Debug.Log(randomTier);
+        Debug.Log(spawnPosition.position);
 
         // Selects a random ability with the chosen tier and spawns it
         var matchingAbilities = abilityDatabase.abilities.FindAll(a => a.tier == randomTier);
         int index = Random.Range(0, matchingAbilities.Count);
         GameObject chosenAbility = matchingAbilities[index].abilityPrefab;
-        Instantiate(chosenAbility, spawnPosition.position, Quaternion.identity);
+        GameObject abilityPrefab = Instantiate(chosenAbility, spawnPosition.position, Quaternion.identity, spawnPosition);
     }
 
     void TestAbilityTiers(int count)
