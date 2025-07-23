@@ -21,6 +21,7 @@ TagManager:
   - Heart
   - TempHeart
   - AbilitySpawn
+  - AbilityPopup
   layers:
   - Default
   - TransparentFX

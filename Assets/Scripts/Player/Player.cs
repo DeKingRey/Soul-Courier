@@ -52,6 +52,8 @@ public class Player : MonoBehaviour
     [Header("Stats")]
     public float damageMultiplier = 1;
     public float rangeMultiplier = 1;
+    public float firerateMultiplier = 1;
+    public float speedMultiplier = 1;
     public float luckMultiplier = 1;
     public float stampMultiplier = 1;
 
@@ -146,11 +148,11 @@ public class Player : MonoBehaviour
             // Sets velocity to the direction of the movement input
             if (Input.GetKey(KeyCode.LeftShift)) // If left shift is being held down, the player sprints
             {
-                velocity = moveDir.normalized * sprintSpeed;
+                velocity = moveDir.normalized * sprintSpeed * speedMultiplier;
             }
             else
             {
-                velocity = moveDir.normalized * speed;
+                velocity = moveDir.normalized * speed * speedMultiplier;
             }
         }
         else
@@ -187,7 +189,7 @@ public class Player : MonoBehaviour
             if (Input.GetMouseButton(0))
             {
                 Instantiate(bullet, shotPoint.position, shotPoint.rotation);
-                nextShot = Time.time + fireRate;
+                nextShot = Time.time + fireRate * firerateMultiplier;
             }
         }
     }
