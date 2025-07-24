@@ -76,6 +76,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   icon: {fileID: 0}
+  abilityInfo: Manawa Pounamu - Temporary Heart
 --- !u!1 &6051703595144748294
 GameObject:
   m_ObjectHideFlags: 0

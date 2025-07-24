@@ -5,9 +5,10 @@ using SoulCourier.Abilities;
 using UnityEngine.UI;
 
 /// <summary>
-/// Silver fern is a passive ability that increases players stamp(money) collection
+/// The Kumura is a passive ability that increases players stamp(money) collection
+/// The kumara represented maori prosperity etc
 /// </summary>
-public class SilverFern : MonoBehaviour, IUseAbility
+public class Kumara : MonoBehaviour, IUseAbility
 {
     private Player player;
     public float stampIncrease;

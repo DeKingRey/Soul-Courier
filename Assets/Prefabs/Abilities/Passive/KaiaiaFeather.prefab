@@ -63,6 +63,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   icon: {fileID: 0}
+  abilityInfo: Huruhuru Kaiaia -  Fire Rate Increase
 --- !u!95 &154508286024342290
 Animator:
   serializedVersion: 4

@@ -18,18 +18,23 @@ public class Bullet : MonoBehaviour
 
     void Start()
     {
-        startPos = transform.position;
         player = FindObjectOfType<Player>();
 
         damage *= player.damageMultiplier;
+        transform.localScale *= player.damageMultiplier / 2f;
+
+        // Will get the start pos and add the offset if the bullet is very large
+        float forwardOffset = transform.localScale.z / 2f;
+        startPos = transform.position + transform.forward * forwardOffset;
     }
 
     void Update()
     {
         transform.position += transform.forward * speed * Time.deltaTime;
+        float maxDistance = (range * player.rangeMultiplier) + (transform.localScale.z / 2f);
 
         // Destroys the bullet when it reaches the range
-        if (Vector3.Distance(startPos, transform.position) >= range * player.rangeMultiplier)
+        if (Vector3.Distance(startPos, transform.position) >= maxDistance)
         {
             Destroy(gameObject);
         }
@@ -37,7 +42,8 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Player") && !other.CompareTag("Enemy") && !other.CompareTag("EnemyCollider") && !other.isTrigger)
+        if (!other.CompareTag("Player") && !other.CompareTag("Enemy") && !other.CompareTag("EnemyCollider") && !other.isTrigger &&
+        !other.CompareTag("Ground"))
         {
             // Creates a forward ray that gets information as to what it hit
             if (Physics.Raycast(transform.position - transform.forward * 0.5f, transform.forward, out RaycastHit hit, 1f))

@@ -146,6 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   icon: {fileID: 0}
+  abilityInfo: "Hei Tiki R\u0101kau - Luck Increase"
 --- !u!114 &96426353722016784
 MonoBehaviour:
   m_ObjectHideFlags: 0

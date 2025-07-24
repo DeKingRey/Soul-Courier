@@ -63,6 +63,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   icon: {fileID: 0}
+  abilityInfo: "R\u0101kau M\u0101ire - Damage Increase"
 --- !u!114 &1120469972536324295
 MonoBehaviour:
   m_ObjectHideFlags: 0
