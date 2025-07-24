@@ -21,7 +21,8 @@ public class Bullet : MonoBehaviour
         player = FindObjectOfType<Player>();
 
         damage *= player.damageMultiplier;
-        transform.localScale *= player.damageMultiplier / 2f;
+        float sizeIncrease = 1 + (player.damageMultiplier - 1) / 2f;
+        transform.localScale *= sizeIncrease;
 
         // Will get the start pos and add the offset if the bullet is very large
         float forwardOffset = transform.localScale.z / 2f;

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1472683424654860517}
   - component: {fileID: 1472683424654860536}
   - component: {fileID: 1472683424654860519}
+  - component: {fileID: 5706854029461108587}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -83,6 +84,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &5706854029461108587
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472683424654860516}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4b822f5f0f7c53e45bca2b8bc344af26, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1472683424885590334
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,7 +115,6 @@ GameObject:
   - component: {fileID: 1472683424885590335}
   - component: {fileID: 1472683424885590320}
   - component: {fileID: 1472683424885590321}
-  - component: {fileID: 4229672553032762166}
   - component: {fileID: 4077251491527022936}
   m_Layer: 0
   m_Name: Kumara
@@ -147,26 +167,6 @@ MonoBehaviour:
   type: 0
   icon: {fileID: 0}
   abilityInfo: "K\u016Bmara  - Stamp Collection Increase"
---- !u!95 &4229672553032762166
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1472683424885590334}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4b822f5f0f7c53e45bca2b8bc344af26, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &4077251491527022936
 MonoBehaviour:
   m_ObjectHideFlags: 0

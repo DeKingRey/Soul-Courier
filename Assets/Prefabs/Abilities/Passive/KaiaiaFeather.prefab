@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3235336556684267803}
   - component: {fileID: 3235336556684267796}
   - component: {fileID: 3235336556684267797}
-  - component: {fileID: 154508286024342290}
   - component: {fileID: 3235336556684267798}
   m_Layer: 0
   m_Name: KaiaiaFeather
@@ -64,26 +63,6 @@ MonoBehaviour:
   type: 0
   icon: {fileID: 0}
   abilityInfo: Huruhuru Kaiaia -  Fire Rate Increase
---- !u!95 &154508286024342290
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3235336556684267802}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4b822f5f0f7c53e45bca2b8bc344af26, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &3235336556684267798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,6 +87,7 @@ GameObject:
   - component: {fileID: 3235336556747274433}
   - component: {fileID: 3235336556747274460}
   - component: {fileID: 3235336556747274435}
+  - component: {fileID: 473267762692781519}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -180,3 +160,23 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &473267762692781519
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3235336556747274432}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4b822f5f0f7c53e45bca2b8bc344af26, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

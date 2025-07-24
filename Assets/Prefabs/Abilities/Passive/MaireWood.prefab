@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1120469972536324310}
   - component: {fileID: 1120469972536324311}
   - component: {fileID: 1120469972536324295}
-  - component: {fileID: 5979709905327527528}
   m_Layer: 0
   m_Name: MaireWood
   m_TagString: Untagged
@@ -77,26 +76,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageIncrease: 0.2
---- !u!95 &5979709905327527528
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1120469972536324312}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4b822f5f0f7c53e45bca2b8bc344af26, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1120469972850907394
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,6 +87,7 @@ GameObject:
   - component: {fileID: 1120469972850907395}
   - component: {fileID: 1120469972850907422}
   - component: {fileID: 1120469972850907393}
+  - component: {fileID: 2265440741735056788}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -180,3 +160,23 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &2265440741735056788
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120469972850907394}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4b822f5f0f7c53e45bca2b8bc344af26, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
