@@ -673,7 +673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exits: []
-  level: {fileID: 11400000, guid: 7f317dca4dbba8343a56dc7df61a814b, type: 2}
+  level: {fileID: 11400000, guid: 6d34b02508641b04d960769a53ca9c7e, type: 2}
   enemyDatabase: {fileID: 11400000, guid: 415b0285907190c4f9f03bc7a404f584, type: 2}
   roomSize: {x: 5, y: 13}
 --- !u!65 &5231857665522405595

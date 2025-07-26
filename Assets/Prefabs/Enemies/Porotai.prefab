@@ -393,7 +393,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.007247664, y: 0.009032766, z: 0.0073151398}
   m_Center: {x: 0.00016444584, y: -0.0045414246, z: -0.001342432}
---- !u!114 &5048024594705880152
+--- !u!114 &6556884459361456145
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -402,7 +402,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2875764706416210190}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 991dacedb1ea6e74ca9ec3e0de95873d, type: 3}
+  m_Script: {fileID: 11500000, guid: 361678116d3aebd4cbaf3b3d3b7e8811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &3684839423297324369 stripped
@@ -435,7 +435,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8198308792327422765
+--- !u!114 &5251658501679799749
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -444,11 +444,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4064777124505870315}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4c0abb36786fef409c8edde56234a0b, type: 3}
+  m_Script: {fileID: 11500000, guid: 24c834f6c20b7b64cac4067883c01f1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   manaia: {fileID: 0}
   porotai: {fileID: 8357001586238693895}
+  ponaTuri: {fileID: 0}
 --- !u!1 &6001218876774032229 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1738098815321292321, guid: 4dbc25cf3e5ae5a4591c695047927245, type: 3}
@@ -467,7 +468,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.007247664, y: 0.009032766, z: 0.0073151398}
   m_Center: {x: 0.00016444584, y: -0.0045414246, z: -0.001342432}
---- !u!114 &2810157176787401372
+--- !u!114 &86474894956829098
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -476,7 +477,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6001218876774032229}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 991dacedb1ea6e74ca9ec3e0de95873d, type: 3}
+  m_Script: {fileID: 11500000, guid: 361678116d3aebd4cbaf3b3d3b7e8811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7115663766761034589 stripped
@@ -497,7 +498,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.007247664, y: 0.009032766, z: 0.0073151398}
   m_Center: {x: 0.00016444584, y: -0.0045414246, z: -0.001342432}
---- !u!114 &731666295909684250
+--- !u!114 &4454465118869570330
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -506,7 +507,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7115663766761034589}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 991dacedb1ea6e74ca9ec3e0de95873d, type: 3}
+  m_Script: {fileID: 11500000, guid: 361678116d3aebd4cbaf3b3d3b7e8811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7745121554960264991 stripped
@@ -527,7 +528,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.020531775, y: 0.0205087, z: 0.020546943}
   m_Center: {x: -0.00036137798, y: 0.00890918, z: 0.0001859475}
---- !u!114 &5401920688846868635
+--- !u!114 &4607805465039367293
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -536,7 +537,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7745121554960264991}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 991dacedb1ea6e74ca9ec3e0de95873d, type: 3}
+  m_Script: {fileID: 11500000, guid: 361678116d3aebd4cbaf3b3d3b7e8811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8131548853068051583 stripped
@@ -557,7 +558,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.007247664, y: 0.009032766, z: 0.0073151398}
   m_Center: {x: 0.00016444584, y: -0.0045414246, z: -0.001342432}
---- !u!114 &7929483013357312337
+--- !u!114 &1989091467596536912
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -566,6 +567,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8131548853068051583}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 991dacedb1ea6e74ca9ec3e0de95873d, type: 3}
+  m_Script: {fileID: 11500000, guid: 361678116d3aebd4cbaf3b3d3b7e8811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

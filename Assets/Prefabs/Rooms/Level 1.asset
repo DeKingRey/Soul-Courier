@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Level 1
   m_EditorClassIdentifier: 
   enemyAmount: 4
-  enemyDifficultyRatio: 0200000001000000
+  enemyDifficultyRatio: 020000000100000000000000

@@ -361,7 +361,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1417377180449419661}
   - component: {fileID: 1450493830969415288}
-  - component: {fileID: -527449269968117181}
+  - component: {fileID: 8122665571216058015}
   m_Layer: 0
   m_Name: Fern
   m_TagString: Untagged
@@ -406,7 +406,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-527449269968117181
+--- !u!114 &8122665571216058015
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -415,7 +415,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1792531219647228727}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 167c310c5706bcf4abcb4110d151b831, type: 3}
+  m_Script: {fileID: 11500000, guid: f87b9c02cefcb6045af7e910747b0f66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1803057669798529707

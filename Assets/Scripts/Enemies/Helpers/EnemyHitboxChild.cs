@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriggerChild : MonoBehaviour
+public class EnemyHitboxChild : MonoBehaviour
 {
     private Enemy enemy;
 

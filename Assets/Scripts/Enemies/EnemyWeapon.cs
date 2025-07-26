@@ -13,10 +13,10 @@ public class EnemyWeapon : MonoBehaviour
     void OnTriggerEnter(Collider obj)
     {
         if (obj.CompareTag("Player") && canDamage && !hasDamaged)
-            {
-                obj.GetComponent<Player>().TakeDamage(damage);
-                hasDamaged = true;
-            }
+        {
+            obj.GetComponent<Player>().TakeDamage(damage);
+            hasDamaged = true;
+        }
     }
 
     public void StartAttack()

@@ -54,7 +54,6 @@ MonoBehaviour:
   projectileForce: 20
   throwPoint: {fileID: 8411826020186856809}
   moveCooldownTime: 0.5
-  rotationSpeed: 5
 --- !u!114 &671330496547945805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -453,7 +452,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4388479391983825938, guid: 57af2259ea22f3a439479ad0788265c4, type: 3}
   m_PrefabInstance: {fileID: 424680831016648355}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &50628330419473662
+--- !u!114 &4286283621471399316
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -462,11 +461,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4108345221479877297}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4c0abb36786fef409c8edde56234a0b, type: 3}
+  m_Script: {fileID: 11500000, guid: 24c834f6c20b7b64cac4067883c01f1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   manaia: {fileID: 1158969101874941458}
   porotai: {fileID: 0}
+  ponaTuri: {fileID: 0}
 --- !u!4 &8411826020186856809 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8167290867892757450, guid: 57af2259ea22f3a439479ad0788265c4, type: 3}

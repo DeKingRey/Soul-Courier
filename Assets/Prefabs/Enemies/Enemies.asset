@@ -19,3 +19,5 @@ MonoBehaviour:
     difficulty: 2
   - enemyPrefab: {fileID: 7459055361185872522, guid: 83a20bbafc352db4280b835fa6a7ff56, type: 3}
     difficulty: 1
+  - enemyPrefab: {fileID: 1530089225397186796, guid: 6400dc1a559e7fc47883924ed2dd366b, type: 3}
+    difficulty: 1

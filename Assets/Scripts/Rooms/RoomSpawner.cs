@@ -27,9 +27,6 @@ public class RoomSpawner : MonoBehaviour
     {
         exits = GetComponent<RoomBehaviour>().activeDoors.ToArray();
 
-        minimap = GameObject.FindGameObjectWithTag("Minimap").GetComponent<Minimap>();
-        minimapSprites = GetComponentsInChildren<SpriteRenderer>(true); // The true parameter gets all sprite renderers(despite active)
-
         foreach (Transform child in GetComponentsInChildren<Transform>(true))
         {
             if (child.CompareTag("Spawnpoint"))
@@ -44,6 +41,12 @@ public class RoomSpawner : MonoBehaviour
 
     void Update()
     {
+        if (minimap == null)
+        {
+            minimap = GameObject.FindGameObjectWithTag("Minimap").GetComponent<Minimap>();
+            minimapSprites = GetComponentsInChildren<SpriteRenderer>(true); // The true parameter gets all sprite renderers(despite active)
+        }
+
         if (!currentRoom || !enemiesRemain) return;
 
         enemies.RemoveAll(enemy => enemy == null); // Removes all enemies that are null from the list(defeated enemies)
@@ -73,14 +76,6 @@ public class RoomSpawner : MonoBehaviour
             if (availableEnemies.Count > 0)
             {
                 GameObject enemyPrefab = availableEnemies[Random.Range(0, availableEnemies.Count)]; // Gets a random available enemy
-
-                /*Vector3 spawnPos = GetRandomPosition(); // Gets a random position
-
-                float halfWidth = roomSize.x / 2f;
-                float halfDepth = roomSize.y / 2f;
-
-                Vector3 centerOffset = new Vector3(halfWidth, 5, -halfDepth);
-                Vector3 center = transform.position + centerOffset;*/
                 
                 Transform spawnpoint = spawnpoints[spawnpointIndex];
                 spawnpointIndex++;

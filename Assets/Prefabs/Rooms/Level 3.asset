@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7de02a662c699f5489107cb75a6f1bb4, type: 3}
   m_Name: Level 3
   m_EditorClassIdentifier: 
-  enemyAmount: 8
+  enemyAmount: 10
   enemyDifficultyRatio: 020000000300000002000000

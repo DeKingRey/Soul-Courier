@@ -15,7 +15,6 @@ public class SpawnAbility : MonoBehaviour
         AbilityTier randomTier = AbilityTierHelper.GetRandomTier(luckMultiplier);
 
         Debug.Log(randomTier);
-        Debug.Log(spawnPosition.position);
 
         // Selects a random ability with the chosen tier and spawns it
         var matchingAbilities = abilityDatabase.abilities.FindAll(a => a.tier == randomTier);
