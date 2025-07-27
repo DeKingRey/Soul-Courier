@@ -81,29 +81,19 @@ public class RoomSpawner : MonoBehaviour
                 spawnpointIndex++;
                 GameObject spawnedEnemy = Instantiate(enemyPrefab, spawnpoint.position, Quaternion.identity);
 
+                // Gives the Pona-Turi the rooms spawnpoints
+                PonaTuri ponaTuri = spawnedEnemy.GetComponent<PonaTuri>();
+                if (ponaTuri != null)
+                {
+                    ponaTuri.SetSpawnPoints(spawnpoints);
+                }
+
                 var agent = spawnedEnemy.GetComponent<UnityEngine.AI.NavMeshAgent>(); // Gets the agent of the spawned enemy
                 agent.enabled = false;
                 agent.gameObject.transform.GetChild(0).gameObject.SetActive(false);
                 enemies.Add(agent);
             }
         }
-    }
-
-    public Vector3 GetRandomPosition()
-    {
-        // Gets half the size of the room on both axis
-        float halfWidth = roomSize.x / 2f;
-        float halfDepth = roomSize.y / 2f;
-
-        Vector3 centerOffset = new Vector3(halfWidth, 0, -halfDepth);
-        Vector3 center = transform.position + centerOffset; // Gets the offset to the center because the transform is in the top left
-
-        // Gets a random position on the x and z adding half the respective size to get both ends
-        float x = Random.Range(center.x - halfWidth, center.x + halfWidth);
-        float z = Random.Range(center.z - halfDepth, center.z + halfDepth);
-        float y = center.y + 2f;
-
-        return new Vector3(x, y, z);
     }
 
     void OpenDoors()

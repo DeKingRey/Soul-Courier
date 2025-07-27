@@ -15,7 +15,7 @@ public class EnemyHitboxChild : MonoBehaviour
     {
         if (enemy)
         {
-            if (obj.tag == "Bullet")
+            if (obj.tag == "Bullet" && enemy.defence > 0)
             {
                 Bullet bullet = obj.GetComponent<Bullet>();
                 enemy.TakeDamage(bullet.damage, bullet);

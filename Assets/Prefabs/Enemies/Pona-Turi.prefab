@@ -107,7 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 4
   value: 3
-  defence: 1
+  defence: 0.5
 --- !u!114 &121010404719003378
 MonoBehaviour:
   m_ObjectHideFlags: 0

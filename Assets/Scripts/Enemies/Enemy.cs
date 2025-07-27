@@ -101,7 +101,8 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter(Collider obj)
     {
-        if (obj.tag == "Bullet")
+        Debug.Log(defence);
+        if (obj.tag == "Bullet" && defence > 0)
         {
             Bullet bullet = obj.GetComponent<Bullet>();
             TakeDamage(bullet.damage, bullet);
@@ -146,7 +147,7 @@ public class Enemy : MonoBehaviour
             yield return null;
         }
 
-        agent.enabled = true;
+        if (defence > 0) agent.enabled = true;
         animator.speed = animatorSpeed;
     }
 }
