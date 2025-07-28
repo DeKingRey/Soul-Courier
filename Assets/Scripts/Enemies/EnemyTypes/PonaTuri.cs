@@ -9,7 +9,10 @@ public class PonaTuri : MonoBehaviour
     public float attackCooldown;
     public float attackRange;
     public float moveCooldownTime;
+    public float rotationDuration;
+    public bool canMove = true;
 
+    [Header("Hiding")]
     private bool isHiding;
     public float hideDuration;
     public float underWaterY;
@@ -62,6 +65,8 @@ public class PonaTuri : MonoBehaviour
 
     private void HandleAttack()
     {
+        if (isHiding) return;
+
         timePassed += Time.deltaTime;
         // Checks if the attack cooldown has ended
         if (timePassed >= attackCooldown)
@@ -69,7 +74,7 @@ public class PonaTuri : MonoBehaviour
             // Checks if the player is within the attack range
             if (Vector3.Distance(player.transform.position, transform.position) <= attackRange)
             {
-                animator.SetTrigger("attack"); // Plays attack animation
+                StartCoroutine(FacePlayer());
                 timePassed = 0;
             }
         }
@@ -77,7 +82,7 @@ public class PonaTuri : MonoBehaviour
 
     private void HandleMovement()
     {
-        if (isHiding || !agent.enabled || !agent.isOnNavMesh) return;
+        if (isHiding || !agent.enabled || !agent.isOnNavMesh || !canMove) return;
 
         if (moveCooldown <= 0)
         {
@@ -104,6 +109,42 @@ public class PonaTuri : MonoBehaviour
         {
             animator.speed = 1f;
         }
+    }
+
+    private IEnumerator FacePlayer()
+    {
+        canMove = false; // Prevents movement
+
+        // Gets direction of the player
+        Vector3 playerDir = (player.transform.position - transform.position).normalized;
+        playerDir.y = 0;
+
+        // Gets target rotation
+        Quaternion startRotation = transform.rotation;
+        Quaternion targetRotation = Quaternion.LookRotation(playerDir);
+
+        if (agent.enabled && agent.isOnNavMesh) agent.isStopped = true;
+
+        // Loop will continue until fully rotated then the enemy will attack
+        bool attackStarted = false;
+        float elapsed = 0;
+        while (elapsed < rotationDuration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / rotationDuration);
+            transform.rotation = Quaternion.Slerp(startRotation, targetRotation, t); // Elapsed is the progress
+
+            // Attacks halfway during rotation
+            if (!attackStarted && t >= 0.5f)
+            {
+                animator.SetTrigger("attack");
+                attackStarted = true;
+            }
+
+            yield return null;
+        }
+        canMove = true;
+        if (agent.enabled && agent.isOnNavMesh) agent.isStopped = false;
     }
 
     private void Hide()
@@ -140,9 +181,13 @@ public class PonaTuri : MonoBehaviour
         if (isRising)
         {
             agent.enabled = true;
+            agent.Warp(transform.position);
+            agent.SetDestination(player.transform.position);
             // Animator trigger
+            enemyHealth.isInvulnerable = false;
             enemyHealth.defence = defaultDefence;
             isHiding = false;
+            canMove = true;
         }
         else
         {
@@ -165,7 +210,7 @@ public class PonaTuri : MonoBehaviour
     public void SetSpawnPoints(List<Transform> points)
     {
         spawnPoints = points;
-        for (int i = 0; i < spawnPoints.Count - 1; i++)
+        for (int i = 0; i < spawnPoints.Count; i++)
         {
             Vector3 pos = spawnPoints[i].position;
             pos.y = underWaterY;
@@ -188,6 +233,7 @@ public class PonaTuri : MonoBehaviour
             weapon.EndAttack();
         }
 
+        canMove = true;
         Hide();
     }
 }
