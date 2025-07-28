@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour
     public float health;
     public float value;
     public float defence = 1f;
+    public float stunResistance = 1f;
+    public bool isInvulnerable = false;
 
     private NavMeshAgent agent;
     private Transform target;
@@ -44,7 +46,7 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float damage, Bullet bullet)
     {
-        health -= damage;
+        health -= damage / defence;
 
         #region Damage Effects
         // Spawns hit particle effect
@@ -68,7 +70,7 @@ public class Enemy : MonoBehaviour
         knockbackDirection.Normalize(); // Normalizes 
         StartCoroutine(HandleKnockback(knockbackDirection, bullet.knockbackForce));
 
-        StartCoroutine(StunEnemy(bullet.stunTime * defence));
+        StartCoroutine(StunEnemy(bullet.stunTime * stunResistance));
         #endregion
 
         if (health <= 0)
@@ -101,8 +103,7 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter(Collider obj)
     {
-        Debug.Log(defence);
-        if (obj.tag == "Bullet" && defence > 0)
+        if (obj.tag == "Bullet" && !isInvulnerable)
         {
             Bullet bullet = obj.GetComponent<Bullet>();
             TakeDamage(bullet.damage, bullet);
@@ -125,7 +126,7 @@ public class Enemy : MonoBehaviour
         float elapsed = 0f;
         while (elapsed < 0.2f)
         {
-            transform.position += direction * force * defence * Time.deltaTime; // Applies the knockback
+            transform.position += direction * force * stunResistance * Time.deltaTime; // Applies the knockback
             elapsed += Time.deltaTime;
 
             yield return null;
@@ -147,7 +148,7 @@ public class Enemy : MonoBehaviour
             yield return null;
         }
 
-        if (defence > 0) agent.enabled = true;
+        if (!isInvulnerable && defence == 1) agent.enabled = true;
         animator.speed = animatorSpeed;
     }
 }

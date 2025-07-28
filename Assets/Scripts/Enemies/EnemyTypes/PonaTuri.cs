@@ -110,11 +110,13 @@ public class PonaTuri : MonoBehaviour
     {
         if (isHiding) return;
 
+        isHiding = true;
+
         if (agent.enabled && agent.isOnNavMesh) agent.ResetPath();
         agent.enabled = false;
+        enemyHealth.defence = 3f;
 
         // Animator trigger
-        enemyHealth.defence = 0;
         StartCoroutine(WaterRiseSinkRoutine(underWaterY, false));
     }
 
@@ -123,7 +125,7 @@ public class PonaTuri : MonoBehaviour
         // Will cause the Pona-Turi to either rise or sink
         Vector3 startPos = transform.position;
         Vector3 newPos = new Vector3(startPos.x, yPos, startPos.z);
-
+        
         float elapsed = 0f;
         // Changes y position
         while (elapsed < waterTransitionDuration)
@@ -144,6 +146,8 @@ public class PonaTuri : MonoBehaviour
         }
         else
         {
+            enemyHealth.isInvulnerable = true;
+            currentHealth = enemyHealth.health;
             StartCoroutine(AwaitReemerge());
         }
     }
