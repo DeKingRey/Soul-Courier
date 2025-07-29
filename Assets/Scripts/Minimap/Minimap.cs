@@ -28,6 +28,8 @@ public class Minimap : MonoBehaviour
     // MAKE THE FULL MAP CENTERED AND CONSTANT
     void Update()
     {
+        if (Time.timeScale == 0) return;
+
         bool showingFullMap = fullMapUI.activeSelf; // Bool which depends on whether the game object is active or not
         if (!showingFullMap)
         {

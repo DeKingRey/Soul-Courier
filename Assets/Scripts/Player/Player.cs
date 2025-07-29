@@ -104,8 +104,9 @@ public class Player : MonoBehaviour
                 Vector3 spawnPos = spawnPosObj.transform.position;
                 transform.position = new Vector3(spawnPos.x, 5, spawnPos.z);
             }
-        } 
+        }
 
+        if (Time.timeScale == 0) return;
         Movement();
         
         if (canShoot)

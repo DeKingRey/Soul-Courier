@@ -1,0 +1,82 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using Cinemachine;  
+
+public class PauseMenu : MonoBehaviour 
+{
+    public static bool isPaused = false;
+
+    public GameObject pauseMenuUI;
+    public GameObject compendiumUI;
+    public GameObject optionsMenuUI;
+    private CameraSensitivity cameraSensitivity;
+    private CinemachineFreeLook cameraCinemachine;
+
+    void Start()
+    {
+        cameraSensitivity = FindObjectOfType<CameraSensitivity>();
+        cameraCinemachine = FindObjectOfType<CinemachineFreeLook>();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
+        }
+    }
+
+
+    public void Resume()
+    {
+        pauseMenuUI.SetActive(false); 
+        optionsMenuUI.SetActive(false);
+        compendiumUI.SetActive(false);
+
+        cameraSensitivity.enabled = true;
+        cameraCinemachine.enabled = true;
+
+        Cursor.lockState = CursorLockMode.Locked; 
+        Cursor.visible = false;
+
+        Time.timeScale = 1f; 
+        isPaused = false;
+    }
+ 
+
+    public void Pause()
+    {
+        pauseMenuUI.SetActive(true); 
+
+        cameraSensitivity.enabled = false;
+        cameraCinemachine.enabled = false;
+
+        Cursor.lockState = CursorLockMode.None; // Enables cursor within the screen
+        Cursor.visible = true;
+
+        Time.timeScale = 0f; 
+        isPaused = true;
+    }
+
+    public void LoadMenu()
+    {
+        Debug.Log("loading menu...");
+        SceneManager.LoadScene("MainMenu");
+    }
+
+
+    public void QuitGame()
+    {
+        Debug.Log ("quitting game...");
+        Application.Quit();
+    }
+}

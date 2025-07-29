@@ -45,8 +45,9 @@ public class Delivery : MonoBehaviour
         if (player.canDeliver)
         {
             targetAlpha = 1f;
+            deliveryUI.gameObject.SetActive(true);
 
-            Cursor.lockState = CursorLockMode.Confined; // Enables cursor within the screen
+            Cursor.lockState = CursorLockMode.None; // Enables cursor within the screen
             Cursor.visible = true;
             exitDoor = GameObject.FindWithTag("ExitDoors");
             spawnPos = GameObject.FindWithTag("Reward").transform;
@@ -54,9 +55,13 @@ public class Delivery : MonoBehaviour
         else
         {
             targetAlpha = 0f;
+            deliveryUI.gameObject.SetActive(false);
 
-            Cursor.lockState = CursorLockMode.Locked; // Disables cursor
-            Cursor.visible = false;
+            if (Time.timeScale != 0)
+            {
+                Cursor.lockState = CursorLockMode.Locked; // Disables cursor
+                Cursor.visible = false;
+            }   
         }
 
         // Smoothly increments UI alpha to the target alpha at a speed
