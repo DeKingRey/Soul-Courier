@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class AbilityPopup : MonoBehaviour
+public class EntryPopup : MonoBehaviour
 {
-    public TextMeshProUGUI abilityText;
+    public TextMeshProUGUI entryText;
 
-    public void UpdateAbilityText(string text)
+    public void UpdateEntryText(string text)
     {
-        abilityText.text = text;
+        entryText.text = text;
     }
 
     public void DisablePopup()

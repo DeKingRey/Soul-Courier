@@ -105,6 +105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a786f4e193fd1f40ba54c4128d4e674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: ponaturi
+  info: Ponaturi
   health: 4
   value: 3
   defence: 1

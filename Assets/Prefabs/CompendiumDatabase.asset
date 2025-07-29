@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d8a7a010f9983548a181b1b5dc1a58e, type: 3}
+  m_Name: CompendiumDatabase
+  m_EditorClassIdentifier: 
+  entries:
+  - id: manaia
+    category: 0
+    displayName: Manaia
+    icon: {fileID: 21300000, guid: c637987f8f9a5cf459e47e60ef17138d, type: 3}
+    description: The manaia is a bird human
+    unlocked: 0
+  - id: porotai
+    category: 0
+    displayName: Porotai
+    icon: {fileID: 21300000, guid: 1b0e7185d52d595499019e3543f1ba14, type: 3}
+    description: Rock tutrlte
+    unlocked: 0
+  - id: ponaturi
+    category: 0
+    displayName: Ponaturi
+    icon: {fileID: 21300000, guid: d4d0d2fd84b886f44ab141a6b19e8919, type: 3}
+    description: water creatyre
+    unlocked: 0
+  - id: temp_heart
+    category: 1
+    displayName: Pounamu Manawa
+    icon: {fileID: 21300000, guid: c637987f8f9a5cf459e47e60ef17138d, type: 3}
+    description: 'temp heart
+
+'
+    unlocked: 0
+  - id: 
+    category: 0
+    displayName: 
+    icon: {fileID: 0}
+    description: 
+    unlocked: 0
+  - id: 
+    category: 0
+    displayName: 
+    icon: {fileID: 0}
+    description: 
+    unlocked: 0
+  - id: 
+    category: 0
+    displayName: 
+    icon: {fileID: 0}
+    description: 
+    unlocked: 0
+  - id: 
+    category: 0
+    displayName: 
+    icon: {fileID: 0}
+    description: 
+    unlocked: 0
+  - id: 
+    category: 0
+    displayName: 
+    icon: {fileID: 0}
+    description: 
+    unlocked: 0
+  - id: 
+    category: 0
+    displayName: 
+    icon: {fileID: 0}
+    description: 
+    unlocked: 0

@@ -10,6 +10,11 @@ public class Enemy : MonoBehaviour
     public static GameObject deathParticles;
     public static GameObject ghost;
 
+    [Header("Info")]
+    public string id;
+    public string info;
+    private EntryPopup enemyPopup;
+
     [Header("Stats")]
     public float health;
     public float value;
@@ -37,6 +42,8 @@ public class Enemy : MonoBehaviour
         {
             originalMats.Add(renderer.material);
         }
+
+        enemyPopup = FindObjectOfType<EntryPopup>(true);
     }
 
     void Update()
@@ -75,6 +82,14 @@ public class Enemy : MonoBehaviour
 
         if (health <= 0)
         {
+            // Unlocks enemy and shows a popup if its their first encounter
+            CompendiumTracker.Instance.UnlockEntry(id);
+            if (!CompendiumTracker.Instance.IsEntryUnlocked(id))
+            {
+                enemyPopup.gameObject.SetActive(true);
+                enemyPopup.UpdateEntryText(info);
+            }
+
             for (int i = 0; i < value; i++)
             {
                 Instantiate(soul, new Vector3(transform.position.x, 1, transform.position.z), transform.rotation);

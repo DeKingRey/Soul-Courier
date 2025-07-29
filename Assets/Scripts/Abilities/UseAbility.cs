@@ -9,16 +9,17 @@ public class UseAbility : MonoBehaviour
     public AbilityType type;
     public Image icon;
     public IUseAbility abilityLogic;
+    public string id;
     public string abilityInfo; // In the format "Ability Name - Ability Power"
                                // Could add a change in colour to the popup later
-    private AbilityPopup abilityPopup;
+    private EntryPopup abilityPopup;
     private bool playerHas;
 
     void Start()
     {
         abilityLogic = GetComponent<IUseAbility>();
 
-        abilityPopup = FindObjectOfType<AbilityPopup>(true);
+        abilityPopup = FindObjectOfType<EntryPopup>(true);
     }
 
     void Update()
@@ -38,8 +39,10 @@ public class UseAbility : MonoBehaviour
         {
             playerHas = true;
         }
+        CompendiumTracker.Instance.UnlockEntry(id);
+
         abilityPopup.gameObject.SetActive(true);
-        abilityPopup.UpdateAbilityText(abilityInfo);
+        abilityPopup.UpdateEntryText(abilityInfo);
     }
     
     void UpdateActive()
