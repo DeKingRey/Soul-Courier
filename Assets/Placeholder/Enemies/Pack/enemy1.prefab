@@ -1024,9 +1024,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a786f4e193fd1f40ba54c4128d4e674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: enemy_1
+  info: wowwww
   health: 1
   value: 1
   defence: 1
+  stunResistance: 1
+  isInvulnerable: 0
 --- !u!95 &7728892216454480446
 Animator:
   serializedVersion: 4

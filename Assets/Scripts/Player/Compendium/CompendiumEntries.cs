@@ -14,7 +14,7 @@ public class CompendiumEntries : ScriptableObject
         public Sprite icon;
         [TextArea]
         public string description;
-        [HideInInspector] public bool unlocked;
+        public bool unlocked;
     }
     public List<Entry> entries;
 }
