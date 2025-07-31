@@ -11,6 +11,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI;
     public GameObject compendiumUI;
     public GameObject optionsMenuUI;
+    public GameObject controlsUI;
     private CameraSensitivity cameraSensitivity;
     private CinemachineFreeLook cameraCinemachine;
 
@@ -41,6 +42,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false); 
         optionsMenuUI.SetActive(false);
         compendiumUI.SetActive(false);
+        controlsUI.SetActive(false);
 
         cameraSensitivity.enabled = true;
         cameraCinemachine.enabled = true;

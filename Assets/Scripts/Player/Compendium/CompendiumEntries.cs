@@ -11,7 +11,7 @@ public class CompendiumEntries : ScriptableObject
         public string id;
         public CompendiumCategory category;
         public string displayName;
-        public Sprite icon;
+        public GameObject page;
         [TextArea]
         public string description;
         [HideInInspector] public bool unlocked;
