@@ -31,16 +31,18 @@ public class Pickup : MonoBehaviour
         Vector3 playerPos = player.transform.position + new Vector3(0, 1.5f, 0);
         float distance = Vector3.Distance(playerPos, transform.position); // Gets the shortest distance to the player from the item
 
+        // Moves the item towards the player, if close enough
         if (distance <= 4f)
         {
-            transform.position = Vector3.MoveTowards(transform.position, playerPos, speed * Time.deltaTime); // Moves the item towarss the player
+            transform.position = Vector3.MoveTowards(transform.position, playerPos, speed * Time.deltaTime);
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && item != "")
         {
+            Debug.Log(item);
             player.Pickup(item);
             Destroy(obj);
         }

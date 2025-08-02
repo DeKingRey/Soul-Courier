@@ -22,12 +22,4 @@ public class SpawnAbility : MonoBehaviour
         GameObject chosenAbility = matchingAbilities[index].abilityPrefab;
         GameObject abilityPrefab = Instantiate(chosenAbility, spawnPosition.position, Quaternion.identity, spawnPosition);
     }
-
-    void TestAbilityTiers(int count)
-    {
-        for (int i = 0; i < count; i++)
-        {
-            Debug.Log($"Random Tier Selected: {AbilityTierHelper.GetRandomTier(1)}");
-        }
-    }
 }

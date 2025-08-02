@@ -83,11 +83,11 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             // Unlocks enemy and shows a popup if its their first encounter
-            CompendiumTracker.Instance.UnlockEntry(id);
             if (!CompendiumTracker.Instance.IsEntryUnlocked(id))
             {
                 enemyPopup.gameObject.SetActive(true);
                 enemyPopup.UpdateEntryText(info);
+                CompendiumTracker.Instance.UnlockEntry(id);
             }
 
             for (int i = 0; i < value; i++)

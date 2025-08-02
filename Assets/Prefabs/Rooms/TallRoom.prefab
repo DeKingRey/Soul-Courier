@@ -228,6 +228,7 @@ Transform:
   - {fileID: 589718224853776903}
   - {fileID: 6305673414814856186}
   - {fileID: 4574946866698087385}
+  - {fileID: 3554710156454166851}
   m_Father: {fileID: 2843154979597922312}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -594,7 +595,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2843154979597922312}
   - component: {fileID: 2843154979597922315}
-  - component: {fileID: 6501233240634944044}
+  - component: {fileID: 4207020094617935618}
   - component: {fileID: 5231857665522405595}
   m_Layer: 0
   m_Name: TallRoom
@@ -637,6 +638,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 312c71c9bdb254a4587d6892c0eb3118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exits: []
+  level: {fileID: 11400000, guid: 6d34b02508641b04d960769a53ca9c7e, type: 2}
+  enemyDatabase: {fileID: 11400000, guid: 415b0285907190c4f9f03bc7a404f584, type: 2}
+  roomSize: {x: 4, y: 4}
+  rewardChance: 0.9
+  rewards:
+  - {fileID: 8601672824137286174, guid: dce42b539025d554986445f28e61528d, type: 3}
+  - {fileID: 3015114457089825258, guid: a10947cf3765dc04eb74f985748220d5, type: 3}
+  - {fileID: 3015114457089825258, guid: 9703d52579dfef34386920bde18a5f27, type: 3}
+  - {fileID: 3015114457089825258, guid: 9703d52579dfef34386920bde18a5f27, type: 3}
+  - {fileID: 3070015336027529365, guid: d0800d844f868ca4a9b77fb7e8235a35, type: 3}
+  - {fileID: 3070015336027529365, guid: d0800d844f868ca4a9b77fb7e8235a35, type: 3}
+  - {fileID: 8601672824137286174, guid: bbe33c9a3ab604b4d950769bc7456c0d, type: 3}
+  - {fileID: 8601672824137286174, guid: bbe33c9a3ab604b4d950769bc7456c0d, type: 3}
+  rewardSpawn: {fileID: 3554710156454166851}
+--- !u!114 &4207020094617935618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2843154979597922313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4461402346bd5e045be0d9ebce65a046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   walls:
   - row:
     - {fileID: 6004708266031954669}
@@ -660,22 +688,6 @@ MonoBehaviour:
     - {fileID: 2336145902112681570}
     - {fileID: 4190785708356901813}
   activeDoors: []
---- !u!114 &6501233240634944044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2843154979597922313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c582c577894216489282b165ee7833a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  exits: []
-  level: {fileID: 11400000, guid: 6d34b02508641b04d960769a53ca9c7e, type: 2}
-  enemyDatabase: {fileID: 11400000, guid: 415b0285907190c4f9f03bc7a404f584, type: 2}
-  roomSize: {x: 5, y: 13}
 --- !u!65 &5231857665522405595
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1394,6 +1406,37 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &6102039839256420702
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3554710156454166851}
+  m_Layer: 0
+  m_Name: RewardSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3554710156454166851
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6102039839256420702}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6, y: 6, z: -18.000002}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3047755170719858128}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6177565611174658473
 GameObject:
   m_ObjectHideFlags: 0

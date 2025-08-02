@@ -277,7 +277,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2843154979597922312}
-  - component: {fileID: 2843154979597922315}
+  - component: {fileID: 6002321297264579371}
   - component: {fileID: 2910974325015429433}
   m_Layer: 0
   m_Name: StartRoom
@@ -308,7 +308,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2843154979597922315
+--- !u!114 &6002321297264579371
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -317,7 +317,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2843154979597922313}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 312c71c9bdb254a4587d6892c0eb3118, type: 3}
+  m_Script: {fileID: 11500000, guid: 4461402346bd5e045be0d9ebce65a046, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   walls:

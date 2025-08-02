@@ -15,8 +15,6 @@ public class CameraSensitivity : MonoBehaviour
     {
         if (Time.timeScale == 0) return;
 
-        Debug.Log(sensitivity);
-
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
 

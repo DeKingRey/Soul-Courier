@@ -473,7 +473,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2843154979597922312}
   - component: {fileID: 2843154979597922315}
-  - component: {fileID: 5620275275322616950}
+  - component: {fileID: 4495489974280229347}
   - component: {fileID: 2652582847832805864}
   m_Layer: 0
   m_Name: Room 3
@@ -515,6 +515,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 312c71c9bdb254a4587d6892c0eb3118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exits: []
+  level: {fileID: 11400000, guid: 7f317dca4dbba8343a56dc7df61a814b, type: 2}
+  enemyDatabase: {fileID: 11400000, guid: 415b0285907190c4f9f03bc7a404f584, type: 2}
+  roomSize: {x: 1, y: 1}
+  rewardChance: 0.5
+  rewards:
+  - {fileID: 8601672824137286174, guid: dce42b539025d554986445f28e61528d, type: 3}
+  - {fileID: 3015114457089825258, guid: a10947cf3765dc04eb74f985748220d5, type: 3}
+  - {fileID: 3015114457089825258, guid: a10947cf3765dc04eb74f985748220d5, type: 3}
+  - {fileID: 3015114457089825258, guid: 9703d52579dfef34386920bde18a5f27, type: 3}
+  - {fileID: 3070015336027529365, guid: d0800d844f868ca4a9b77fb7e8235a35, type: 3}
+  - {fileID: 8601672824137286174, guid: bbe33c9a3ab604b4d950769bc7456c0d, type: 3}
+  rewardSpawn: {fileID: 5678196959540891839}
+--- !u!114 &4495489974280229347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2843154979597922313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4461402346bd5e045be0d9ebce65a046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   walls:
   - row:
     - {fileID: 8144287129126636675}
@@ -534,22 +559,6 @@ MonoBehaviour:
   - row:
     - {fileID: 8689055001925935541}
   activeDoors: []
---- !u!114 &5620275275322616950
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2843154979597922313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c582c577894216489282b165ee7833a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  exits: []
-  level: {fileID: 11400000, guid: 7f317dca4dbba8343a56dc7df61a814b, type: 2}
-  enemyDatabase: {fileID: 11400000, guid: 415b0285907190c4f9f03bc7a404f584, type: 2}
-  roomSize: {x: 5, y: 5}
 --- !u!65 &2652582847832805864
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -622,6 +631,37 @@ Transform:
   - {fileID: 5379588385447267741}
   m_Father: {fileID: 2843154979597922312}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3071104014449598173
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5678196959540891839}
+  m_Layer: 0
+  m_Name: RewardSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5678196959540891839
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3071104014449598173}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6, y: 6, z: -6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 642957385152184026}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3127286400836830188
 GameObject:
@@ -881,6 +921,7 @@ Transform:
   - {fileID: 7380209879368247281}
   - {fileID: 2321553622540506720}
   - {fileID: 8760058653240364266}
+  - {fileID: 5678196959540891839}
   m_Father: {fileID: 2843154979597922312}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

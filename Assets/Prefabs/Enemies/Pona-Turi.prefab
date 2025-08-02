@@ -106,8 +106,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: ponaturi
-  info: Ponaturi
-  health: 4
+  info: Ponaturi Discovered
+  health: 3
   value: 3
   defence: 1
   stunResistance: 0.5

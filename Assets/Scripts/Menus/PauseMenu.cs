@@ -31,6 +31,20 @@ public class PauseMenu : MonoBehaviour
             }
             else
             {
+                pauseMenuUI.SetActive(true); 
+                Pause();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (isPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                compendiumUI.SetActive(true);
                 Pause();
             }
         }
@@ -57,8 +71,6 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
     {
-        pauseMenuUI.SetActive(true); 
-
         cameraSensitivity.enabled = false;
         cameraCinemachine.enabled = false;
 

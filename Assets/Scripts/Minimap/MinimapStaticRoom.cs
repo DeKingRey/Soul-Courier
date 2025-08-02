@@ -6,7 +6,7 @@ public class MinimapStaticRoom : MonoBehaviour
 {
     // This script is for the minimap rooms like, start, end, blackmarket, shop, etc that don't have the room spawner script to emable them on the minimap
 
-    public Minimap minimap;
+    private Minimap minimap;
     private SpriteRenderer[] minimapSprites;
     private bool entered;
 

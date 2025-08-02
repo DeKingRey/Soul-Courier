@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: manaia
-  info: Manaia
+  info: Manaia Discovered
   health: 3
   value: 5
   defence: 1

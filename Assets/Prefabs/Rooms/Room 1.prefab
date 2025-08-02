@@ -125,6 +125,37 @@ Transform:
   m_Father: {fileID: 375895408010228844}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2225091141828063642
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2811745984333389948}
+  m_Layer: 0
+  m_Name: RewardSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2811745984333389948
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2225091141828063642}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6, y: 6, z: -6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 375895408010228844}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2239005169078967426
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,7 +494,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2843154979597922312}
   - component: {fileID: 2843154979597922315}
-  - component: {fileID: 6439735465253693810}
+  - component: {fileID: 7606143074736323293}
   - component: {fileID: 8333443725161765365}
   m_Layer: 0
   m_Name: Room 1
@@ -505,6 +536,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 312c71c9bdb254a4587d6892c0eb3118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exits: []
+  level: {fileID: 11400000, guid: 5f379ae327daf3c499528555a2b01974, type: 2}
+  enemyDatabase: {fileID: 11400000, guid: 415b0285907190c4f9f03bc7a404f584, type: 2}
+  roomSize: {x: 1, y: 1}
+  rewardChance: 1
+  rewards:
+  - {fileID: 8601672824137286174, guid: dce42b539025d554986445f28e61528d, type: 3}
+  - {fileID: 8601672824137286174, guid: dce42b539025d554986445f28e61528d, type: 3}
+  - {fileID: 8601672824137286174, guid: dce42b539025d554986445f28e61528d, type: 3}
+  - {fileID: 3015114457089825258, guid: a10947cf3765dc04eb74f985748220d5, type: 3}
+  - {fileID: 3015114457089825258, guid: a10947cf3765dc04eb74f985748220d5, type: 3}
+  - {fileID: 3015114457089825258, guid: 9703d52579dfef34386920bde18a5f27, type: 3}
+  - {fileID: 3070015336027529365, guid: d0800d844f868ca4a9b77fb7e8235a35, type: 3}
+  - {fileID: 8601672824137286174, guid: bbe33c9a3ab604b4d950769bc7456c0d, type: 3}
+  rewardSpawn: {fileID: 2811745984333389948}
+--- !u!114 &7606143074736323293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2843154979597922313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4461402346bd5e045be0d9ebce65a046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   walls:
   - row:
     - {fileID: 8144287129126636675}
@@ -524,26 +582,6 @@ MonoBehaviour:
   - row:
     - {fileID: 8689055001925935541}
   activeDoors: []
---- !u!114 &6439735465253693810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2843154979597922313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c582c577894216489282b165ee7833a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  exits:
-  - {fileID: 2104778706615476946}
-  - {fileID: 1749509776897580224}
-  - {fileID: 4027145748676557389}
-  - {fileID: 3796147044604326995}
-  level: {fileID: 11400000, guid: 5f379ae327daf3c499528555a2b01974, type: 2}
-  enemyDatabase: {fileID: 11400000, guid: 415b0285907190c4f9f03bc7a404f584, type: 2}
-  roomSize: {x: 5, y: 5}
 --- !u!65 &8333443725161765365
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1042,6 +1080,7 @@ Transform:
   - {fileID: 6345002327681665609}
   - {fileID: 3116733383684675376}
   - {fileID: 324258284436555552}
+  - {fileID: 2811745984333389948}
   m_Father: {fileID: 2843154979597922312}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1897,11 +1936,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9175d08a6bdddeb48afa15d1b714d918, type: 3}
---- !u!1 &2104778706615476946 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 416386656469751746, guid: 9175d08a6bdddeb48afa15d1b714d918, type: 3}
-  m_PrefabInstance: {fileID: 1797745905244878096}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1918600433213676456
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2029,11 +2063,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9175d08a6bdddeb48afa15d1b714d918, type: 3}
---- !u!1 &1749509776897580224 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 416386656469751746, guid: 9175d08a6bdddeb48afa15d1b714d918, type: 3}
-  m_PrefabInstance: {fileID: 2125924056029596418}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2234351976171629321
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4751,11 +4780,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9175d08a6bdddeb48afa15d1b714d918, type: 3}
---- !u!1 &3796147044604326995 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 416386656469751746, guid: 9175d08a6bdddeb48afa15d1b714d918, type: 3}
-  m_PrefabInstance: {fileID: 3560608886918325137}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3613020282832334223
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4821,11 +4845,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9175d08a6bdddeb48afa15d1b714d918, type: 3}
---- !u!1 &4027145748676557389 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 416386656469751746, guid: 9175d08a6bdddeb48afa15d1b714d918, type: 3}
-  m_PrefabInstance: {fileID: 3613020282832334223}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3724067842251910396
 PrefabInstance:
   m_ObjectHideFlags: 0

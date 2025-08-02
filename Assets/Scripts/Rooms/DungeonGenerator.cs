@@ -133,7 +133,7 @@ public class DungeonGenerator : MonoBehaviour
                 new Vector3(offsetX, 0, -offsetY),
                 Quaternion.identity,
                 transform
-            ).GetComponent<RoomBehaviour>(); // Instantiates the room
+            ).GetComponent<RoomDoors>(); // Instantiates the room
 
             Vector2Int rSize = rooms[randomRoom].roomSize;
 

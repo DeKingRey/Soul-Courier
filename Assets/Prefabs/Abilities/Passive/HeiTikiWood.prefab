@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  icon: {fileID: 0}
+  id: hei_tiki_wood
   abilityInfo: "Hei Tiki R\u0101kau - Luck Increase"
 --- !u!114 &96426353722016784
 MonoBehaviour:
@@ -179,4 +179,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1831a094a641d64458bd6449819e7c14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  luckIncrease: 0.2
+  luckIncrease: 0.4

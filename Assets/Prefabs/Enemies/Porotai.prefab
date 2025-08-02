@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: porotai
-  info: Porotai
+  info: Porotai Discovered
   health: 5
   value: 2
   defence: 1

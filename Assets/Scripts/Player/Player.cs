@@ -190,7 +190,7 @@ public class Player : MonoBehaviour
             if (Input.GetMouseButton(0))
             {
                 Instantiate(bullet, shotPoint.position, shotPoint.rotation);
-                nextShot = Time.time + fireRate * firerateMultiplier;
+                nextShot = Time.time + fireRate / firerateMultiplier;
             }
         }
     }

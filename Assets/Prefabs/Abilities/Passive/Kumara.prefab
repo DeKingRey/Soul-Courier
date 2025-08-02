@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  icon: {fileID: 0}
+  id: kumara
   abilityInfo: "K\u016Bmara  - Stamp Collection Increase"
 --- !u!114 &4077251491527022936
 MonoBehaviour:
@@ -179,4 +179,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddb5702569c9ffc49bb58fac34a09df7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stampIncrease: 0.2
+  stampIncrease: 1

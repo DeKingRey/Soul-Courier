@@ -62,6 +62,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manawaHeartUI: {fileID: 21300000, guid: c637987f8f9a5cf459e47e60ef17138d, type: 3}
+  healAmount: 1
+  isTemp: 1
 --- !u!114 &-7007391367956803622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,7 +77,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  icon: {fileID: 0}
+  id: manawa_pounamu
   abilityInfo: Pounamu Manawa - Temporary Heart
 --- !u!1 &6051703595144748294
 GameObject:

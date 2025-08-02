@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class UseAbility : MonoBehaviour
 {
     public AbilityType type;
-    public Image icon;
     public IUseAbility abilityLogic;
     public string id;
     public string abilityInfo; // In the format "Ability Name - Ability Power"

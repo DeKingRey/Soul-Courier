@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  icon: {fileID: 0}
+  id: hei_tuna
   abilityInfo: Hei Tuna - Speed Increase
 --- !u!114 &1999325741925427017
 MonoBehaviour:
