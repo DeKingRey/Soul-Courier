@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 3015114457089825249}
   - component: {fileID: 1036377044425390199}
   - component: {fileID: 1474005494368206968}
+  - component: {fileID: 794933128024780569}
+  - component: {fileID: 3466671632817870534}
   m_Layer: 0
   m_Name: Manawa
   m_TagString: Untagged
@@ -45,7 +47,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3015114457089825258}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -96,6 +98,45 @@ MonoBehaviour:
   item: 
   isChild: 0
   speed: 5
+  price: 3
+--- !u!114 &794933128024780569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3015114457089825258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 1, g: 1, b: 1, a: 0}
+  outlineWidth: 5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!95 &3466671632817870534
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3015114457089825258}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3d110141d7f0a2d4897d8a128f8441c1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3946153538362253660
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,6 +147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1571402307806584377}
   - component: {fileID: 7966451478899058853}
+  - component: {fileID: 7465670024975345699}
   m_Layer: 0
   m_Name: Pickup
   m_TagString: Untagged
@@ -141,6 +183,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.2, y: 1.2, z: 1.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7465670024975345699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3946153538362253660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c53e1ba535747e4b8e0b83e99dbec74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: 
+  isChild: 0
+  speed: 0
+  price: 0
 --- !u!1001 &5121372359151589407
 PrefabInstance:
   m_ObjectHideFlags: 0

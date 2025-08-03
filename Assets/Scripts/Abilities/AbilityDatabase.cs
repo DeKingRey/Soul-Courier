@@ -16,6 +16,9 @@ public class AbilityDatabase : ScriptableObject
 
         [SerializeField]
         public AbilityType type; // One-shot, Active, or Passive
+        
+        [SerializeField]
+        public int price; // Shop price
     }
     public List<Ability> abilities;    
 }
