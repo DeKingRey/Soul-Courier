@@ -286,7 +286,7 @@ public class Player : MonoBehaviour
                 newHeartSlot.tag = "TempHeart";
             }
 
-            TakeDamage(0); // Increases health
+            TakeDamage(-1); // Increases health
         }
     }
 

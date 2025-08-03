@@ -8439,7 +8439,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 820550874}
-  m_LocalRotation: {x: -0.04117448, y: 0.08241009, z: 0.0034077025, w: 0.9957418}
+  m_LocalRotation: {x: -0.04117447, y: 0.082410134, z: 0.0034077042, w: 0.9957418}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -17082,7 +17082,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2138480272}
-  m_LocalRotation: {x: -2.008918e-38, y: 0.08248054, z: 1.109086e-39, w: 0.9965927}
+  m_LocalRotation: {x: -0, y: 0.08248054, z: -0, w: 0.9965927}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -17195,6 +17195,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4884048752796166727, guid: 84ed1dc4d6a5dfd4e898f17f3a79b2a6, type: 3}
+      propertyPath: raycastDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4884048752796166727, guid: 84ed1dc4d6a5dfd4e898f17f3a79b2a6, type: 3}
+      propertyPath: itemLayer.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 5897466173608999186, guid: 84ed1dc4d6a5dfd4e898f17f3a79b2a6, type: 3}
       propertyPath: vignette
       value: 

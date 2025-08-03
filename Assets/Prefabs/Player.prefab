@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5897466173608999186}
   - component: {fileID: 5897466173608999197}
   - component: {fileID: 5897466173608999198}
+  - component: {fileID: 4884048752796166727}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -66,8 +67,12 @@ MonoBehaviour:
   bullet: {fileID: 8241355011817410511, guid: 4b29622e910a9454f910f12ab1817167, type: 3}
   shotPoint: {fileID: 5897466173678793830}
   fireRate: 0.5
+  damageMultiplier: 1
   rangeMultiplier: 1
+  firerateMultiplier: 1
+  speedMultiplier: 1
   luckMultiplier: 1
+  stampMultiplier: 1
   souls: 0
   stamps: 0
   keys: 0
@@ -121,6 +126,22 @@ CapsuleCollider:
   m_Height: 1.781246
   m_Direction: 1
   m_Center: {x: 0.0040638447, y: 1.0239583, z: -0.0007392168}
+--- !u!114 &4884048752796166727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5897466173608999199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e15bfd0a169df8046893a2d20d63d786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raycastDistance: 0
+  itemLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &5897466173678793831
 GameObject:
   m_ObjectHideFlags: 0

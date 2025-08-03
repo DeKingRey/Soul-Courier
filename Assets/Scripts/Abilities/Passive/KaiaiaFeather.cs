@@ -5,7 +5,7 @@ using SoulCourier.Abilities;
 using UnityEngine.UI;
 
 /// <summary>
-/// Kaiaia Feather will increase fire rate
+/// kārearea Feather will increase fire rate
 /// This is because it is a feather of a falcon which is a fast hunter
 /// </summary>
 public class KaiaiaFeather : MonoBehaviour, IUseAbility

@@ -47,14 +47,14 @@ public class ShopManager : MonoBehaviour
             item.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
 
             // Disables colliders and item magnets
-            item.GetComponent<BoxCollider>().enabled = false; 
+            item.GetComponent<BoxCollider>().isTrigger = false; 
             foreach (Transform child in item.transform)
             {
                 BoxCollider collider = child.GetComponent<BoxCollider>();
 
                 if (collider != null && collider.isTrigger)
                 {
-                    collider.enabled = false;
+                    collider.isTrigger = false;
                 }
             }
             Pickup pickup = item.GetComponentInChildren<Pickup>();
@@ -76,6 +76,11 @@ public class ShopManager : MonoBehaviour
                 animator = animatorChild.AddComponent<Animator>();
                 animator.runtimeAnimatorController = animatorController;
             }
+
+            // Adds layer and outline 
+            item.layer = LayerMask.NameToLayer("Shop Item");
+            Outline outline = item.AddComponent<Outline>();
+            outline.OutlineWidth = 0;
 
             j++;
         }

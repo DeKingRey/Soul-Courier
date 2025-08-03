@@ -11,8 +11,8 @@ public class CompendiumTracker : MonoBehaviour
 
     void Awake()
     {
-        //PlayerPrefs.DeleteAll();
-        //PlayerPrefs.Save();
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
         if (Instance == null)
         {
             Instance = this;
