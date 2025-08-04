@@ -6,12 +6,14 @@ public class ShopItem : MonoBehaviour
 {
     public string name;
     public int price;
+    [HideInInspector] public RuntimeAnimatorController animatorController;
+
 
     void Start()
     {
-        // Disables colliders and item magnets
-        item.GetComponent<BoxCollider>().isTrigger = false; 
-        foreach (Transform child in item.transform)
+        // Disables colliders, rbs, and item magnets
+        GetComponent<BoxCollider>().isTrigger = false; 
+        foreach (Transform child in transform)
         {
             BoxCollider collider = child.GetComponent<BoxCollider>();
 
@@ -20,19 +22,19 @@ public class ShopItem : MonoBehaviour
                 collider.isTrigger = false;
             }
         }
-        Pickup pickup = item.GetComponentInChildren<Pickup>();
+        Pickup pickup = GetComponentInChildren<Pickup>();
         if (pickup != null)
         {
             pickup.speed = 0;
         }
-        Rigidbody rb = item.GetComponent<Rigidbody>();
+        Rigidbody rb = GetComponent<Rigidbody>();
         if (rb != null)
         {
             rb.isKinematic = true;
         }
 
         // Adds animation to items that don't already have the default animation
-        GameObject animatorChild = item.transform.GetChild(0).gameObject;
+        GameObject animatorChild = transform.GetChild(0).gameObject;
         Animator animator = animatorChild.GetComponent<Animator>();
         if (animator == null)
         {
@@ -41,8 +43,8 @@ public class ShopItem : MonoBehaviour
         }
 
         // Adds layer and outline 
-        item.layer = LayerMask.NameToLayer("Shop Item");
-        Outline outline = item.AddComponent<Outline>();
+        gameObject.layer = LayerMask.NameToLayer("Shop Item");
+        Outline outline = gameObject.AddComponent<Outline>();
         outline.OutlineWidth = 0;
     }
 

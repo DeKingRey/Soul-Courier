@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3015114457089825253}
   - component: {fileID: 3015114457089825249}
   - component: {fileID: -7007391367956803622}
+  - component: {fileID: 6069572653028627488}
   m_Layer: 0
   m_Name: ManawaPounamu
   m_TagString: Untagged
@@ -79,6 +80,21 @@ MonoBehaviour:
   type: 0
   id: manawa_pounamu
   abilityInfo: Pounamu Manawa - Temporary Heart
+--- !u!114 &6069572653028627488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3015114457089825258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71c8bc977fc17a747876560dd498ebd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: 
+  price: 4
+  animatorController: {fileID: 0}
 --- !u!1 &6051703595144748294
 GameObject:
   m_ObjectHideFlags: 0

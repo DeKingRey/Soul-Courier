@@ -116,6 +116,7 @@ GameObject:
   - component: {fileID: 1472683424885590320}
   - component: {fileID: 1472683424885590321}
   - component: {fileID: 4077251491527022936}
+  - component: {fileID: 6522696772977794215}
   m_Layer: 0
   m_Name: Kumara
   m_TagString: Untagged
@@ -180,3 +181,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stampIncrease: 1
+--- !u!114 &6522696772977794215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472683424885590334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71c8bc977fc17a747876560dd498ebd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: 
+  price: 2
+  animatorController: {fileID: 0}

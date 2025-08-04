@@ -116,6 +116,7 @@ GameObject:
   - component: {fileID: 1999325741925427019}
   - component: {fileID: 1999325741925427018}
   - component: {fileID: 1999325741925427017}
+  - component: {fileID: 3420462749406828838}
   m_Layer: 0
   m_Name: HeiTuna
   m_TagString: Untagged
@@ -180,3 +181,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedIncrease: 0.2
+--- !u!114 &3420462749406828838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999325741925427023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71c8bc977fc17a747876560dd498ebd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: 
+  price: 2
+  animatorController: {fileID: 0}

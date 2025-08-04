@@ -5,13 +5,7 @@ using SoulCourier.Abilities;
 
 public class ShopManager : MonoBehaviour
 {
-    // Dictionary
-    public class ShopItem
-    {
-        public GameObject prefab;
-        public int price;
-    }
-    private Dictionary<int, ShopItem> items = new Dictionary<int, ShopItem>();
+    private Dictionary<int, GameObject> items = new Dictionary<int, GameObject>();
 
     public GameObject[] pickupItems;
     public AbilityDatabase abilityDatabase;
@@ -33,54 +27,21 @@ public class ShopManager : MonoBehaviour
             AbilityDatabase.Ability chosenAbility = matchingAbilities[index];
 
             // Adds item prefab and price to the dict
-            items.Add(i, new ShopItem { prefab = chosenAbility.abilityPrefab, price = chosenAbility.price});
+            items.Add(i, chosenAbility.abilityPrefab);
         }
         GameObject chosenItem = pickupItems[Random.Range(0, pickupItems.Length)];
-        items.Add(3, new ShopItem { prefab = chosenItem, price = chosenItem.GetComponentInChildren<Pickup>().price });
+        items.Add(3, chosenItem);
 
         int j = 0;
         foreach (var pair in items)
         {
-            GameObject prefab = pair.Value.prefab;
+            GameObject prefab = pair.Value;
             
             GameObject item = Instantiate(prefab, spawnPositions[j].position, Quaternion.identity, spawnPositions[j]);
             item.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
-
-            // Disables colliders and item magnets
-            item.GetComponent<BoxCollider>().isTrigger = false; 
-            foreach (Transform child in item.transform)
-            {
-                BoxCollider collider = child.GetComponent<BoxCollider>();
-
-                if (collider != null && collider.isTrigger)
-                {
-                    collider.isTrigger = false;
-                }
-            }
-            Pickup pickup = item.GetComponentInChildren<Pickup>();
-            if (pickup != null)
-            {
-                pickup.speed = 0;
-            }
-            Rigidbody rb = item.GetComponent<Rigidbody>();
-            if (rb != null)
-            {
-                rb.isKinematic = true;
-            }
-
-            // Adds animation to items that don't already have the default animation
-            GameObject animatorChild = item.transform.GetChild(0).gameObject;
-            Animator animator = animatorChild.GetComponent<Animator>();
-            if (animator == null)
-            {
-                animator = animatorChild.AddComponent<Animator>();
-                animator.runtimeAnimatorController = animatorController;
-            }
-
-            // Adds layer and outline 
-            item.layer = LayerMask.NameToLayer("Shop Item");
-            Outline outline = item.AddComponent<Outline>();
-            outline.OutlineWidth = 0;
+            ShopItem shopItem = item.GetComponent<ShopItem>();
+            shopItem.enabled = true;
+            shopItem.animatorController = animatorController;
 
             j++;
         }

@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 3015114457089825249}
   - component: {fileID: 2800026226993993736}
   - component: {fileID: 2143450826121700084}
+  - component: {fileID: 6472120890982790695}
   m_Layer: 0
   m_Name: ManawaHalf
   m_TagString: Untagged
@@ -138,10 +139,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c53e1ba535747e4b8e0b83e99dbec74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: 
+  item: Half Manawa
   isChild: 0
   speed: 5
   price: 2
+--- !u!114 &6472120890982790695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3015114457089825258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71c8bc977fc17a747876560dd498ebd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: 
+  price: 2
+  animatorController: {fileID: 0}
 --- !u!1001 &5844540328823501589
 PrefabInstance:
   m_ObjectHideFlags: 0
