@@ -8,7 +8,6 @@ public class ShopItem : MonoBehaviour
     public int price;
     [HideInInspector] public RuntimeAnimatorController animatorController;
 
-
     void Start()
     {
         // Disables colliders, rbs, and item magnets

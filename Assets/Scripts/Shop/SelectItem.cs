@@ -7,6 +7,7 @@ using TMPro;
 public class SelectItem : MonoBehaviour
 {
     private Outline currentOutline;
+    private ShopItem currentItem;
     public float raycastDistance;
     public LayerMask itemLayer;
     private Dictionary<Outline, Coroutine> activeCoroutines = new();
@@ -30,19 +31,21 @@ public class SelectItem : MonoBehaviour
             {
                 if (currentOutline != null)
                 {
-                    OutlineTransition(currentOutline, 0, 0, 0.2f, shopItem); // Clears outline
+                    OutlineTransition(currentOutline, 0, 0, 0.2f, currentItem); // Clears outline
                 }
 
                 currentOutline = outline;
-                OutlineTransition(currentOutline, 5f, 185f, 0.2f, null); // Adds outline
+                currentItem = shopItem;
+                OutlineTransition(currentOutline, 5f, 185f, 0.2f, currentItem); // Adds outline
             }
             return;
         }
 
         if (currentOutline != null)
         {
-            OutlineTransition(currentOutline, 0, 0, 0.2f, null); // Clears outline
+            OutlineTransition(currentOutline, 0, 0, 0.2f, currentItem); // Clears outline
             currentOutline = null;
+            currentItem = null;
         }
     }
 
@@ -55,10 +58,25 @@ public class SelectItem : MonoBehaviour
             activeCoroutines.Remove(outline);
         }
 
+        Debug.Log(shopItem);
+
+        // Adds the info for the item
         if (shopItem != null)
         {
-            TextMeshProUGUI itemInfo = itemInfoDisplay.GetComponentInChildren<TextMeshProUGUI>();
-            itemInfo.text = $"{shopItem.name}: {shopItem.price.ToString()}";
+            // Sets the text to display info
+            TextMeshProUGUI itemInfoText = itemInfoDisplay.GetComponentInChildren<TextMeshProUGUI>();
+            itemInfoText.text = $"{shopItem.name}: ${shopItem.price.ToString()}";
+
+            RectTransform backgroundRect = itemInfoDisplay.gameObject.GetComponent<RectTransform>();
+
+            // Sets the position just above the item
+            Vector3 itemPos = shopItem.gameObject.transform.position;
+            Vector3 targetPos = new Vector3(itemPos.x, itemPos.y + 1f, itemPos.z);
+            backgroundRect.position = targetPos;
+
+            Vector2 infoDisplaySize = itemInfoText.GetPreferredValues();
+            Vector2 padding = new Vector2(0f, 0f);
+            backgroundRect.sizeDelta = infoDisplaySize + padding;
         }
 
         // Starts the coroutine if theres an outline
