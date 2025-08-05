@@ -193,6 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c8bc977fc17a747876560dd498ebd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: "Hei Tiki R\u0101kau"
+  itemName: "Hei Tiki R\u0101kau"
   price: 2
   animatorController: {fileID: 0}
+  purchased: 0

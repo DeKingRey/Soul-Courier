@@ -89,9 +89,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c8bc977fc17a747876560dd498ebd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: "R\u0101kau M\u0101ire"
+  itemName: "R\u0101kau M\u0101ire"
   price: 4
   animatorController: {fileID: 0}
+  purchased: 0
 --- !u!1001 &105140173234203661
 PrefabInstance:
   m_ObjectHideFlags: 0

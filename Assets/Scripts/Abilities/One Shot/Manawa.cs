@@ -40,7 +40,8 @@ public class Manawa : MonoBehaviour, IUseAbility
             }
             else
             {
-                if (player.health != player.maxHealth)
+                // Adds health if it isn't a temp heart
+                if (player.health >= player.maxHealth)
                 {
                     player.TakeDamage(-healAmount);
                     Destroy(gameObject);

@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class ShopItem : MonoBehaviour
 {
-    public string name;
+    public string itemName;
     public int price;
     [HideInInspector] public RuntimeAnimatorController animatorController;
+    [HideInInspector] public bool purchased;
 
     void Start()
     {
