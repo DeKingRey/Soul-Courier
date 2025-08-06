@@ -14,7 +14,7 @@ public class SpawnAbility : MonoBehaviour
         float luckMultiplier = FindObjectOfType<Player>().luckMultiplier;
         AbilityTier randomTier = AbilityTierHelper.GetRandomTier(luckMultiplier);
 
-        Debug.Log(randomTier);
+        // Debug.Log(randomTier);
 
         // Selects a random ability with the chosen tier and spawns it
         var matchingAbilities = abilityDatabase.abilities.FindAll(a => a.tier == randomTier);

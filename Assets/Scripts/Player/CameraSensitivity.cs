@@ -11,7 +11,12 @@ public class CameraSensitivity : MonoBehaviour
     public float xSensitivity;
     public float ySensitivity;
 
-    void Update()
+    void Start()
+    {
+        Application.targetFrameRate = 60;
+    }
+
+    void FixedUpdate()
     {
         if (Time.timeScale == 0) return;
 
