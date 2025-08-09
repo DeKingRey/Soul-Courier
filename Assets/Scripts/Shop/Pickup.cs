@@ -6,6 +6,7 @@ public class Pickup : MonoBehaviour
 {
     private Player player;
     public string item;
+    public int amount = 1;
 
     private GameObject obj;
     public bool isChild;
@@ -43,7 +44,7 @@ public class Pickup : MonoBehaviour
     {
         if (other.tag == "Player" && item != "")
         {
-            player.Pickup(item);
+            player.Pickup(item, amount);
             Destroy(obj);
         }
     }

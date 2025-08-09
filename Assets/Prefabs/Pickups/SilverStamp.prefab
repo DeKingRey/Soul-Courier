@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 61a6302cc103c97429d3725a5bb5ec49, type: 2}
+  - {fileID: 2100000, guid: 3b1656ae6b749ef4fa766cd49a5f2c7f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,8 +110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c53e1ba535747e4b8e0b83e99dbec74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: bomb
-  amount: 1
+  item: stamp
+  amount: 2
   isChild: 1
   speed: 0
   price: 0
@@ -127,9 +127,8 @@ GameObject:
   - component: {fileID: 8601672824137286145}
   - component: {fileID: 2416137877982916623}
   - component: {fileID: 7641126226865464313}
-  - component: {fileID: 2583346550111586242}
   m_Layer: 0
-  m_Name: Bomb
+  m_Name: SilverStamp
   m_TagString: Stamp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -193,23 +192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: 
-  amount: 1
+  amount: 0
   isChild: 0
   speed: 5
-  price: 2
---- !u!114 &2583346550111586242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8601672824137286174}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71c8bc977fc17a747876560dd498ebd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemName: "P\u014Dmu"
-  price: 3
-  animatorController: {fileID: 0}
-  purchased: 0
+  price: 0

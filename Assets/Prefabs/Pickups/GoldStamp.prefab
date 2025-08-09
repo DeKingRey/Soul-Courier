@@ -111,8 +111,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: stamp
+  amount: 3
   isChild: 1
   speed: 0
+  price: 0
 --- !u!1 &8601672824137286174
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,7 +130,7 @@ GameObject:
   - component: {fileID: 2416137877982916623}
   - component: {fileID: 7641126226865464313}
   m_Layer: 0
-  m_Name: Stamp
+  m_Name: GoldStamp
   m_TagString: Stamp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -242,5 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: 
+  amount: 0
   isChild: 0
   speed: 5
+  price: 0

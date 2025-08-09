@@ -10,6 +10,8 @@ public class CameraSensitivity : MonoBehaviour
 
     public float xSensitivity;
     public float ySensitivity;
+    public float xSpeed;
+    public float ySpeed;
 
     void Start()
     {
@@ -25,5 +27,8 @@ public class CameraSensitivity : MonoBehaviour
 
         freeLookCam.m_XAxis.Value += mouseX * sensitivity * xSensitivity;
         freeLookCam.m_YAxis.Value += -mouseY * sensitivity * ySensitivity;
+
+        freeLookCam.m_XAxis.m_MaxSpeed = xSpeed * sensitivity;
+        freeLookCam.m_YAxis.m_MaxSpeed = ySpeed * sensitivity;
     }
 }

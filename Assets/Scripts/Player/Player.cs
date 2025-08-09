@@ -61,6 +61,7 @@ public class Player : MonoBehaviour
     public float souls;
     public float stamps;
     public float keys;
+    public float bombs;
 
     public bool canDeliver;
     public bool canShoot;
@@ -299,11 +300,12 @@ public class Player : MonoBehaviour
         isInvulnerable = false;
     }
 
-    public void Pickup(string item)
+    public void Pickup(string item, int amount)
     {
-        if (item == "soul") souls++;
-        else if (item == "stamp") stamps += 1 * stampMultiplier;
-        else if (item == "key") keys++;
+        if (item == "soul") souls += amount;
+        else if (item == "stamp") stamps += amount * stampMultiplier;
+        else if (item == "key") keys += amount;
+        else if (item == "bomb") bombs += amount;
     }
 
     void OnTriggerEnter(Collider obj)

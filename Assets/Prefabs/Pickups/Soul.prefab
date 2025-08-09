@@ -111,5 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: soul
+  amount: 1
   isChild: 0
   speed: 5
+  price: 0

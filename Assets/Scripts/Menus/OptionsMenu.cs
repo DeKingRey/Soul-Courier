@@ -17,7 +17,7 @@ public class OptionsMenu : MonoBehaviour
     {
         // Sets values from player prefs
         cameraSensitivity = FindObjectOfType<CameraSensitivity>();
-        float savedSensitivity = PlayerPrefs.GetFloat("Sensitivity", 1f);
+        float savedSensitivity = PlayerPrefs.GetFloat("Sensitivity", 0.5f);
 
         int savedQuality = PlayerPrefs.GetInt("Quality", QualitySettings.GetQualityLevel());
         QualitySettings.SetQualityLevel(savedQuality, true); // Default is medium

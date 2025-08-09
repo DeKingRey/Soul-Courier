@@ -652,6 +652,7 @@ MonoBehaviour:
   - {fileID: 3070015336027529365, guid: d0800d844f868ca4a9b77fb7e8235a35, type: 3}
   - {fileID: 8601672824137286174, guid: bbe33c9a3ab604b4d950769bc7456c0d, type: 3}
   - {fileID: 8601672824137286174, guid: bbe33c9a3ab604b4d950769bc7456c0d, type: 3}
+  - {fileID: 8601672824137286174, guid: 202dae90e5de73d46934599a3c3d8b8a, type: 3}
   rewardSpawn: {fileID: 3554710156454166851}
 --- !u!114 &4207020094617935618
 MonoBehaviour:

@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: 
+  amount: 1
   isChild: 0
   speed: 5
   price: 2
@@ -240,6 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: key
+  amount: 1
   isChild: 1
   speed: 0
   price: 0

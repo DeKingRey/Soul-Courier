@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c53e1ba535747e4b8e0b83e99dbec74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: Half Manawa
+  item: 
   isChild: 0
   speed: 5
   price: 2
