@@ -21,6 +21,7 @@ public class Kumara : MonoBehaviour, IUseAbility
     public void Use()
     {
         // Increases player stamp collection
+        player = FindObjectOfType<Player>();
         player.stampMultiplier += stampIncrease;
         Destroy(gameObject);
     }

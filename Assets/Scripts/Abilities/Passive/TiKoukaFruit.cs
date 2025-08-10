@@ -21,6 +21,7 @@ public class TiKoukaFruit : MonoBehaviour, IUseAbility
     public void Use()
     {
         // Increases player range
+        player = FindObjectOfType<Player>();
         player.rangeMultiplier += rangeIncrease; // Small increase like 0.2f
         Destroy(gameObject);
     }

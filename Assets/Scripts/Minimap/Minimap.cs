@@ -30,6 +30,8 @@ public class Minimap : MonoBehaviour
     {
         if (Time.timeScale == 0) return;
 
+        if (mapCamera == null) mapCamera = GetComponent<Camera>();
+
         bool showingFullMap = fullMapUI.activeSelf; // Bool which depends on whether the game object is active or not
         if (!showingFullMap)
         {

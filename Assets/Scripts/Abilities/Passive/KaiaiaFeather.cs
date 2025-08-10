@@ -21,6 +21,7 @@ public class KaiaiaFeather : MonoBehaviour, IUseAbility
     public void Use()
     {
         // Increases player fire rate
+        player = FindObjectOfType<Player>();
         player.firerateMultiplier += firerateIncrease; // Small increase like 0.2f
         Destroy(gameObject);
     }

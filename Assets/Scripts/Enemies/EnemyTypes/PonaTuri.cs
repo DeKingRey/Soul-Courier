@@ -18,6 +18,7 @@ public class PonaTuri : MonoBehaviour
     public float underWaterY;
     public float waterTransitionDuration;
     private List<Transform> spawnPoints;
+    public GameObject hideModelObj;
 
     private GameObject player;
     private Player playerScript;
@@ -168,11 +169,21 @@ public class PonaTuri : MonoBehaviour
         Vector3 newPos = new Vector3(startPos.x, yPos, startPos.z);
         
         float elapsed = 0f;
+        float t = 0;
+        bool isActive = false;
         // Changes y position
         while (elapsed < waterTransitionDuration)
         {
             elapsed += Time.deltaTime;
-            transform.position = Vector3.Lerp(startPos, newPos, elapsed / waterTransitionDuration);
+            t = elapsed / waterTransitionDuration;
+            transform.position = Vector3.Lerp(startPos, newPos, t);
+
+            if (isRising && t < 0.2f && !isActive)
+            {
+                hideModelObj.SetActive(true);
+                isActive = true;
+            }    
+
             yield return null;
         }
         transform.position = newPos;
@@ -193,6 +204,7 @@ public class PonaTuri : MonoBehaviour
         {
             enemyHealth.isInvulnerable = true;
             currentHealth = enemyHealth.health;
+            hideModelObj.SetActive(false);
             StartCoroutine(AwaitReemerge());
         }
     }

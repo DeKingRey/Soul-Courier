@@ -21,6 +21,7 @@ public class MaireWood : MonoBehaviour, IUseAbility
     public void Use()
     {
         // Increases player damage
+        player = FindObjectOfType<Player>();
         player.damageMultiplier += damageIncrease; // Small increase like 0.2f
         Destroy(gameObject);
     }

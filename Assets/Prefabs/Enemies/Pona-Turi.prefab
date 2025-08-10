@@ -132,6 +132,7 @@ MonoBehaviour:
   hideDuration: 3
   underWaterY: -5
   waterTransitionDuration: 1
+  hideModelObj: {fileID: 3949555992977520761}
 --- !u!195 &3960253420648762568
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1388,8 +1389,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.007170921, y: 0.04024977, z: 0.012138423}
-  m_Center: {x: -0.0006683306, y: 0.01244799, z: -0.003976571}
+  m_Size: {x: 0.007170921, y: 0.040249772, z: 0.022783076}
+  m_Center: {x: -0.0006683326, y: 0.012447996, z: -0.0004410536}
 --- !u!114 &8325807520452658172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1418,8 +1419,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.0071709207, y: 0.040249772, z: 0.012097853}
-  m_Center: {x: -0.0006683373, y: 0.0124480035, z: 0.0027943337}
+  m_Size: {x: 0.007170921, y: 0.040249772, z: 0.022783076}
+  m_Center: {x: -0.0006683326, y: 0.012447996, z: -0.0004410536}
 --- !u!114 &6838732642868207675
 MonoBehaviour:
   m_ObjectHideFlags: 0

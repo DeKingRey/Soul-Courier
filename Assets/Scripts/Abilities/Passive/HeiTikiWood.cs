@@ -22,6 +22,7 @@ public class HeiTikiWood : MonoBehaviour, IUseAbility
     public void Use()
     {
         // Increases player luck
+        player = FindObjectOfType<Player>();
         player.rangeMultiplier += luckIncrease; // Small increase like 0.2f
         Destroy(gameObject);
     }

@@ -22,6 +22,7 @@ public class HeiTuna : MonoBehaviour, IUseAbility
     public void Use()
     {
         // Increases player speed
+        player = FindObjectOfType<Player>();
         player.speedMultiplier += speedIncrease; // Small increase like 0.2f
         Destroy(gameObject);
     }

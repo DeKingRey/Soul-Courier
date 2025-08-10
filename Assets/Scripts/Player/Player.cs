@@ -16,13 +16,12 @@ public class Player : MonoBehaviour
 
     public float jumpPower;
     private bool isGrounded;
-    #endregion
 
     private Rigidbody rb;
-
     private Vector3 velocity;
-
     private Transform mainCam;
+    
+    #endregion
 
     #region Health Variables
     [Header("Health")]
@@ -49,6 +48,7 @@ public class Player : MonoBehaviour
     float nextShot;
     #endregion
 
+    #region Stat Multipliers
     [Header("Stats")]
     public float damageMultiplier = 1;
     public float rangeMultiplier = 1;
@@ -57,11 +57,16 @@ public class Player : MonoBehaviour
     public float luckMultiplier = 1;
     public float stampMultiplier = 1;
 
+    #endregion
+
+    #region Pickups
     [Header("Items")]
     public float souls;
     public float stamps;
     public float keys;
     public float bombs;
+
+    #endregion
 
     public bool canDeliver;
     public bool canShoot;
@@ -92,6 +97,8 @@ public class Player : MonoBehaviour
             if (heartImage.gameObject.CompareTag("Heart")) heartsUI.Add(heartImage.gameObject);
             else heartsSlotUI.Add(heartImage.gameObject);
         }
+
+        PlayerStats.Instance.LoadStats(this);
     }
 
     void Update()
@@ -126,7 +133,7 @@ public class Player : MonoBehaviour
     {
         if (transform.position.y < -100)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Die();
         }
 
         #region Movement
@@ -201,7 +208,7 @@ public class Player : MonoBehaviour
         if (!isInvulnerable || damage <= 0)
         {
             health = Mathf.Clamp(health - damage, 0f, maxHealth + tempHearts); // Clamps health between 0 and max to prevent overhealing
-
+            PlayerStats.Instance.UpdateStats();
             if (damage > 0)
             {
                 tempHearts = Mathf.Max(0, tempHearts - damage); // Ensures temp hearts isn't less than 0
@@ -246,7 +253,7 @@ public class Player : MonoBehaviour
 
             if (health <= 0)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                Die();
             }
 
             // If health wasn't added
@@ -291,6 +298,12 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void Die()
+    {
+        PlayerStats.Instance.ResetStats();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     private IEnumerator InvulnerabilityCountdown()
     {
         isInvulnerable = true;
@@ -306,6 +319,8 @@ public class Player : MonoBehaviour
         else if (item == "stamp") stamps += amount * stampMultiplier;
         else if (item == "key") keys += amount;
         else if (item == "bomb") bombs += amount;
+
+        PlayerStats.Instance.UpdateStats();
     }
 
     void OnTriggerEnter(Collider obj)

@@ -17,7 +17,6 @@ public class UseAbility : MonoBehaviour
     void Start()
     {
         abilityLogic = GetComponent<IUseAbility>();
-
         abilityPopup = FindObjectOfType<EntryPopup>(true);
     }
 
@@ -27,21 +26,31 @@ public class UseAbility : MonoBehaviour
         if (type == AbilityType.OneShot) UpdateOneShot();
     }
 
-    void PickUpAbility()
+    public void PickUpAbility(bool isLoading)
     {
+        if (abilityLogic == null)
+        {
+            abilityLogic = GetComponent<IUseAbility>();
+        }
+
         // Player pickup ability and add
         if (type == AbilityType.Passive)
         {
             abilityLogic.Use();
+            if (!isLoading) PlayerStats.Instance.abilityIDs.Add(id);
         }
         else
         {
             playerHas = true;
         }
-        CompendiumTracker.Instance.UnlockEntry(id);
 
-        abilityPopup.gameObject.SetActive(true);
-        abilityPopup.UpdateEntryText(abilityInfo);
+        if (!isLoading)
+        {
+            CompendiumTracker.Instance.UnlockEntry(id);
+
+            abilityPopup.gameObject.SetActive(true);
+            abilityPopup.UpdateEntryText(abilityInfo);
+        }   
     }
     
     void UpdateActive()
@@ -64,7 +73,7 @@ public class UseAbility : MonoBehaviour
     {
         if (obj.CompareTag("Player"))
         {
-            PickUpAbility();
+            PickUpAbility(false);
         }
     }
 }
