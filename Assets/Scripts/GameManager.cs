@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
+using Cinemachine;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,6 +29,15 @@ public class GameManager : MonoBehaviour
     public GameObject deathParticles;
     public GameObject ghost;
 
+    [Header("Game Over Stats")]
+    public GameObject gameOverUI;
+    public TMP_Text timeDisplay;
+    public TMP_Text soulsDisplay;
+    public TMP_Text deathCauseDisplay;
+    public TMP_Text levelDisplay;
+    private float elapsedTime;
+    public CinemachineImpulseSource gameOverShake;
+
     void Start()
     {
         player = FindObjectOfType<Player>();
@@ -41,6 +52,9 @@ public class GameManager : MonoBehaviour
     {
         if (!begin) return;
 
+        if (player.isDead) GameOver();
+
+        elapsedTime += Time.deltaTime;
         UpdateItems();
     }
 
@@ -84,5 +98,21 @@ public class GameManager : MonoBehaviour
         quotaSlider.value = currentValue;
         stampText.text = player.stamps.ToString();
         keyText.text = player.keys.ToString();
+    }
+
+    public void GameOver()
+    {
+        gameOverUI.SetActive(true);
+        CameraShakeManager.Instance.CameraShake(gameOverShake);
+
+        // Converts game time to HH:MM:SS
+        int hours = Mathf.FloorToInt(elapsedTime / 3600f);
+        int minutes = Mathf.FloorToInt((elapsedTime % 3600f) / 60f);
+        int seconds = Mathf.FloorToInt(elapsedTime % 60f);
+
+        timeDisplay.text = string.Format("Time - {0:00}:{1:00}:{2:00}", hours, minutes, seconds); // Time values must have at least 2 characters
+        soulsDisplay.text = $"Souls - {player.souls.ToString()}";
+        deathCauseDisplay.text = "Cause of Death - Isaac";
+        levelDisplay.text = $"Level - {player.currentLevel.ToString()}";
     }
 }

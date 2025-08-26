@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     private Rigidbody rb;
     private Vector3 velocity;
     private Transform mainCam;
-    
+
     #endregion
 
     #region Health Variables
@@ -75,6 +75,12 @@ public class Player : MonoBehaviour
 
     private GameObject spawnPosObj;
 
+    public bool playerStatsExists;
+
+    public int currentLevel = 1;
+    [HideInInspector] public bool isDead;
+    public GameObject playerModel;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -98,7 +104,11 @@ public class Player : MonoBehaviour
             else heartsSlotUI.Add(heartImage.gameObject);
         }
 
-        PlayerStats.Instance.LoadStats(this);
+        if (PlayerStats.Instance != null)
+        {
+            PlayerStats.Instance.LoadStats(this);
+            playerStatsExists = true;
+        }
     }
 
     void Update()
@@ -114,7 +124,13 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (Time.timeScale == 0) return;
+        if (!playerStatsExists && PlayerStats.Instance != null)
+        {
+            PlayerStats.Instance.LoadStats(this);
+            playerStatsExists = true;
+        }
+
+        if (Time.timeScale == 0 || isDead) return;
         Movement();
         
         if (canShoot)
@@ -300,8 +316,10 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
-        PlayerStats.Instance.ResetStats();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        isDead = true;
+
+        // Spawn particle effects
+        playerModel.SetActive(false);
     }
 
     private IEnumerator InvulnerabilityCountdown()
@@ -332,6 +350,7 @@ public class Player : MonoBehaviour
 
         if (obj.tag == "Exit")
         {
+            currentLevel++;
             int currentIndex = SceneManager.GetActiveScene().buildIndex;
             int nextIndex = currentIndex + 1;
 

@@ -7,6 +7,7 @@ using Cinemachine;
 public class PauseMenu : MonoBehaviour 
 {
     public static bool isPaused = false;
+    public bool gameOverPause = false;
 
     public GameObject pauseMenuUI;
     public GameObject compendiumUI;
@@ -23,6 +24,8 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
+        if (gameOverPause) return;
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)
@@ -31,7 +34,7 @@ public class PauseMenu : MonoBehaviour
             }
             else
             {
-                pauseMenuUI.SetActive(true); 
+                pauseMenuUI.SetActive(true);
                 Pause();
             }
         }
