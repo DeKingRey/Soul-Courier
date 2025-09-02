@@ -7,7 +7,7 @@ using TMPro;
 public class OptionsMenu : MonoBehaviour
 {
     [Header("Sensitivity")]
-    private CameraSensitivity cameraSensitivity;
+    private CameraController cameraSensitivity;
     public Slider sensitivitySlider;
 
     [Header("Quality")]
@@ -16,7 +16,7 @@ public class OptionsMenu : MonoBehaviour
     void Start()
     {
         // Sets values from player prefs
-        cameraSensitivity = FindObjectOfType<CameraSensitivity>();
+        cameraSensitivity = FindObjectOfType<CameraController>();
         float savedSensitivity = PlayerPrefs.GetFloat("Sensitivity", 0.5f);
 
         int savedQuality = PlayerPrefs.GetInt("Quality", QualitySettings.GetQualityLevel());

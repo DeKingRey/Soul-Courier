@@ -13,13 +13,13 @@ public class PauseMenu : MonoBehaviour
     public GameObject compendiumUI;
     public GameObject optionsMenuUI;
     public GameObject controlsUI;
-    private CameraSensitivity cameraSensitivity;
-    private CinemachineFreeLook cameraCinemachine;
+    private CameraController cameraSensitivity;
+    private CinemachineVirtualCamera cameraCinemachine;
 
     void Start()
     {
-        cameraSensitivity = FindObjectOfType<CameraSensitivity>();
-        cameraCinemachine = FindObjectOfType<CinemachineFreeLook>();
+        cameraSensitivity = FindObjectOfType<CameraController>();
+        cameraCinemachine = FindObjectOfType<CinemachineVirtualCamera>();
     }
 
     void Update()

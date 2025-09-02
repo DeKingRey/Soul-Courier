@@ -40,12 +40,14 @@ public class Player : MonoBehaviour
     private bool isInvulnerable;
     #endregion
 
-    #region Bullet Variables
+    #region Bullet Combat Variables
     [Header("Combat")]
     public GameObject bullet;
     public Transform shotPoint;
+    public Transform lookAtPoint;
     public float fireRate;
     float nextShot;
+    public GameObject weapon;
     #endregion
 
     #region Stat Multipliers
@@ -197,13 +199,21 @@ public class Player : MonoBehaviour
             rb.velocity = new Vector3(rb.velocity.x, jumpPower, rb.velocity.z);
             isGrounded = false;
         }
-        
+
         // Checks if the player lets go of space
         if (Input.GetButtonUp("Jump"))
         {
             // Halves vertical velocity making the jump cut short
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y * 0.5f, rb.velocity.z);
         }
+        #endregion
+
+        #region Aiming
+
+        Vector3 weaponRotation = weapon.transform.localEulerAngles;
+        weaponRotation.y = mainCam.eulerAngles.x - 15f;
+        weapon.transform.localEulerAngles = weaponRotation;
+
         #endregion
     }
 
@@ -213,7 +223,25 @@ public class Player : MonoBehaviour
         {
             if (Input.GetMouseButton(0))
             {
-                Instantiate(bullet, shotPoint.position, shotPoint.rotation);
+                Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f));
+                Vector3 targetPoint;
+
+                Bullet bulletData = bullet.GetComponent<Bullet>();
+                float maxDistance = bulletData.range * rangeMultiplier;
+                float bulletSpeed = bulletData.speed;
+                if (Physics.Raycast(ray, out RaycastHit hit, maxDistance))
+                {
+                    targetPoint = hit.point;
+                }
+                else
+                {
+                    targetPoint = ray.GetPoint(maxDistance);
+                }
+
+                Vector3 shootDir = mainCam.forward.normalized;
+
+                GameObject bulletObj = Instantiate(bullet, shotPoint.position, Quaternion.LookRotation(shootDir));
+                bulletObj.GetComponent<Rigidbody>().velocity = shootDir * bulletSpeed;
                 nextShot = Time.time + fireRate / firerateMultiplier;
             }
         }
